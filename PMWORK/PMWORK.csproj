@@ -58,13 +58,15 @@
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
     <Compile Include="Entities\Applicant.cs" />
-    <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Cleam.cs" />
     <Compile Include="Entities\Coding.cs" />
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\ConsumablePart.cs" />
     <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\Machinery.cs" />
+    <Compile Include="Entities\MenuGroup.cs" />
+    <Compile Include="Entities\MenuItem.cs" />
     <Compile Include="Entities\RequestRepair.cs" />
     <Compile Include="Entities\SubGroup.cs" />
     <Compile Include="Entities\TypeofRepair.cs" />
@@ -76,10 +78,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106220806334_DBCreate1.cs" />
+    <Compile Include="Migrations\202106220806334_DBCreate1.designer.cs">
+      <DependentUpon>202106220806334_DBCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106220806334_DBCreate1.resx">
+      <DependentUpon>202106220806334_DBCreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -20,6 +20,56 @@ namespace NetSystem.Models
             base.OnModelCreating(builder);
 
 
+            builder.Entity<ApplicationUser>().HasKey(x => x.UserId);
+            builder.Entity<ApplicationUser>().Property(x => x.UserId).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            builder.Entity<ApplicationUser>().Property(x => x.UserName).IsRequired().HasMaxLength(20);
+            builder.Entity<ApplicationUser>().Property(x => x.UserPassword).IsRequired().HasMaxLength(100);
+            builder.Entity<ApplicationUser>()
+                .HasMany<RequestRepair>(x => x.RequestRepairs)
+                .WithRequired(x => x.ApplicationUser)
+                .HasForeignKey(x => x.UserID_FK)
+                .WillCascadeOnDelete(false);
+            builder.Entity<ApplicationUser>()
+                .HasMany<Coding>(x => x.Codings)
+                .WithRequired(x => x.ApplicationUser)
+                .HasForeignKey(x => x.UserID_FK)
+                .WillCascadeOnDelete(false);
+
+
+
+
+
+            builder.Entity<MenuGroup>().HasKey(x => x.GroupID);
+            builder.Entity<MenuGroup>().Property(x => x.GroupID).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            builder.Entity<MenuGroup>().Property(x => x.MenuGroupTitle).IsRequired().HasMaxLength(100);
+            builder.Entity<MenuGroup>()
+                .HasMany<MenuItem>(x => x.MenuItems)
+                .WithRequired(x => x.MenuGroup)
+                .HasForeignKey(x => x.GroupID_FK)
+                .WillCascadeOnDelete(false);
+
+
+
+            builder.Entity<MenuItem>().HasKey(x => x.ItemID);
+            builder.Entity<MenuItem>().Property(x => x.ItemID).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            builder.Entity<MenuItem>().Property(x => x.GroupID_FK).IsRequired();
+            builder.Entity<MenuItem>().Property(x => x.ItemTitel).HasMaxLength(150).IsRequired();
+            builder.Entity<MenuItem>()
+                .HasMany(x => x.Cleams)
+                .WithRequired(x => x.MenuItem)
+                .HasForeignKey(x => x.MenuItemID_FK)
+                .WillCascadeOnDelete(false);
+
+            builder.Entity<Cleam>().HasKey(x => x.ID);
+            builder.Entity<Cleam>().Property(x => x.ID).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            builder.Entity<Cleam>().Property(x => x.UserID_FK).IsRequired();
+            builder.Entity<Cleam>().Property(x => x.MenuItemID_FK).IsRequired();
+
+
+
+
+
+
             builder.Entity<Coding>().HasKey(x => x.ID);
             builder.Entity<Coding>().Property(x => x.ID)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -159,8 +209,29 @@ namespace NetSystem.Models
                 .HasForeignKey(x => x.TypeofRepairID_FK)
                 .WillCascadeOnDelete(false);
 
+            builder.Entity<UnitOfMeasurement>().HasKey(x => x.ID);
+            builder.Entity<UnitOfMeasurement>().Property(a => a.ID).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            builder.Entity<UnitOfMeasurement>().Property(u => u.Unit).HasMaxLength(150).IsRequired();
+            builder.Entity<UnitOfMeasurement>().Property(u => u.Description).HasMaxLength(250);
+            builder.Entity<UnitOfMeasurement>()
+                .HasMany<ConsumablePart>(x => x.ConsumableParts)
+                .WithRequired(x => x.UnitOfMeasurement)
+                .HasForeignKey(x => x.UnitID_FK)
+                .WillCascadeOnDelete(false);
 
 
+            builder.Entity<WorkOrder>().HasKey(x => x.ID);
+            builder.Entity<WorkOrder>().Property(s => s.ID).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            builder.Entity<WorkOrder>().Property(s => s.IsActive).IsRequired();
+            builder.Entity<WorkOrder>().Property(d => d.IsDelete).IsRequired();
+            builder.Entity<WorkOrder>().Property(r => r.RequestID_FK).IsRequired();
+            builder.Entity<WorkOrder>().Property(x => x.StartWorking).IsRequired().HasColumnType("datetime");
+            builder.Entity<WorkOrder>().Property(x => x.OtherErrorDescription).HasMaxLength(250);
+            builder.Entity<WorkOrder>().Property(x => x.ReportRepair).HasMaxLength(700).IsRequired();
+            builder.Entity<WorkOrder>().Property(p => p.PersonHoursDescription).HasMaxLength(250);
+            builder.Entity<WorkOrder>().Property(p => p.NoSparePartsDescription).HasMaxLength(250);
+            builder.Entity<WorkOrder>().Property(p => p.OtherDescription).HasMaxLength(250);
+            builder.Entity<WorkOrder>().Property(p => p.ProductionPlanningDescription).HasMaxLength(250);
 
 
 
@@ -181,6 +252,10 @@ namespace NetSystem.Models
         public virtual DbSet<TypeofRepair> TypeofRepairs { get; set; }
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
         public virtual DbSet<UnitOfMeasurement> UnitOfMeasurements { get; set; }
+        public virtual DbSet<MenuGroup> MenuGroups { get; set; }
+        public virtual DbSet<MenuItem> MenuItems { get; set; }
+        public virtual DbSet<Cleam> Cleams { get; set; }
+
 
     }
 }

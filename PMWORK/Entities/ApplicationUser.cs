@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 
@@ -14,15 +15,10 @@ namespace PMWORK.Entities
             RequestRepairs = new HashSet<RequestRepair>();
             Codings = new HashSet<Coding>();
         }
-
-
-        //[Required]
-        //[MaxLength(250)]
-        //public string FullName { get; set; }
-
-
-
-
+        public int UserId { get; set; }      
+        public string UserName { get; set; }
+        public string UserPassword { get; set; }
+        public bool Enabled { get; set; }
 
         public virtual ICollection<RequestRepair> RequestRepairs { get; set; }
         public virtual ICollection<Coding> Codings { get; set; }

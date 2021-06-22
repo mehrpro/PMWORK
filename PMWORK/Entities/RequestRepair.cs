@@ -23,7 +23,7 @@ namespace PMWORK.Entities
         public bool IsDelete { get; set; }
         public int MachineryID_FK { get; set; }
         public Machinery Machinery { get; set; }
-        public string UserID_FK { get; set; }
+        public int UserID_FK { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         public DateTime RequestDataTime { get; set; }
         public int TypeofRepairID_FK { get; set; }
