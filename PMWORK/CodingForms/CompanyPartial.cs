@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PMWORK
+namespace PMWORK.CodingForms
 {
-    public partial class Form1 : Form
+    public partial class CompanyPartial : UserControl
     {
-        public Form1()
+        public CompanyPartial()
         {
             InitializeComponent();
+            
         }
     }
 }
