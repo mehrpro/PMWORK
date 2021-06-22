@@ -8,22 +8,14 @@ namespace PMWORK.Entities
         public Group()
         {
 
-
-
-            this.SubGroups = new HashSet<SubGroup>();
-            this.Codings = new HashSet<Coding>();
+            SubGroups = new HashSet<SubGroup>();
+            Codings = new HashSet<Coding>();
         }
-        [Display(Name = "شناسه")]
         public int ID { get; set; }
-        [Display(Name = "شرکت")]
         public int CompanyID_FK { get; set; }
-        [Display(Name = "شرکت")]
         public Company Company { get; set; }
-        [Display(Name = "کد گروه")]
         public byte GroupIndex { get; set; }
-        [Display(Name = "عنوان گروه")]
         public string GroupTitle { get; set; }
-        [Display(Name = "توضیحات")]
         public string Description { get; set; }
 
 

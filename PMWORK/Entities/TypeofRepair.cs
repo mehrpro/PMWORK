@@ -9,9 +9,7 @@ namespace PMWORK.Entities
         {
             RequestRepairs = new HashSet<RequestRepair>();
         }
-        [Display(Name = "شناسه")]
         public int ID { get; set; }
-        [Display(Name = "نوع")]
         public string TypeTitle { get; set; }
 
 
