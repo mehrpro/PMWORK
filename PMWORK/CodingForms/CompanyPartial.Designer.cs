@@ -37,6 +37,10 @@ namespace PMWORK.CodingForms
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvCompany = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDescription = new DevExpress.XtraEditors.TextEdit();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtCompanyTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCompanyIndex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -45,6 +49,7 @@ namespace PMWORK.CodingForms
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -110,23 +115,27 @@ namespace PMWORK.CodingForms
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnClose);
+            this.panelControl1.Controls.Add(this.btnSave);
             this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Controls.Add(this.txtDescription);
             this.panelControl1.Controls.Add(this.txtCompanyTitle);
+            this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.txtCompanyIndex);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(643, 102);
+            this.panelControl1.Size = new System.Drawing.Size(643, 137);
             this.panelControl1.TabIndex = 3;
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.dgvCompany);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 102);
+            this.panelControl2.Location = new System.Drawing.Point(0, 137);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(643, 420);
+            this.panelControl2.Size = new System.Drawing.Size(643, 385);
             this.panelControl2.TabIndex = 4;
             // 
             // dgvCompany
@@ -135,7 +144,7 @@ namespace PMWORK.CodingForms
             this.dgvCompany.Location = new System.Drawing.Point(2, 2);
             this.dgvCompany.MainView = this.gridView1;
             this.dgvCompany.Name = "dgvCompany";
-            this.dgvCompany.Size = new System.Drawing.Size(639, 416);
+            this.dgvCompany.Size = new System.Drawing.Size(639, 381);
             this.dgvCompany.TabIndex = 0;
             this.dgvCompany.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -144,6 +153,40 @@ namespace PMWORK.CodingForms
             // 
             this.gridView1.GridControl = this.dgvCompany;
             this.gridView1.Name = "gridView1";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl3.Location = new System.Drawing.Point(561, 73);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(40, 13);
+            this.labelControl3.TabIndex = 1;
+            this.labelControl3.Text = "توضیحات";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Location = new System.Drawing.Point(214, 70);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Parmida_ActivePlusMultiKeys = false;
+            this.txtDescription.Size = new System.Drawing.Size(328, 20);
+            this.txtDescription.TabIndex = 2;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(467, 96);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "ذخیره";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(386, 96);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "بستن";
             // 
             // CompanyPartial
             // 
@@ -162,6 +205,7 @@ namespace PMWORK.CodingForms
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,5 +220,9 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraGrid.GridControl dgvCompany;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton btnClose;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraEditors.TextEdit txtDescription;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

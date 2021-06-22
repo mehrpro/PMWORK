@@ -73,6 +73,7 @@
     <Compile Include="CodingForms\CompanyPartial.Designer.cs">
       <DependentUpon>CompanyPartial.cs</DependentUpon>
     </Compile>
+    <Compile Include="CodingForms\ViewModels\CompanyViewModel.cs" />
     <Compile Include="Entities\Applicant.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Cleam.cs" />

@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using PMWORK.CodingForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace PMWORK
 
         private void itmCompany_Click(object sender, EventArgs e)
         {
-            var frm = new UserControl();
+            var frm = new CompanyPartial();
         }
     }
 }
