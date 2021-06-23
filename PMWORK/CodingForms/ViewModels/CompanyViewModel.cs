@@ -9,7 +9,7 @@ namespace PMWORK.CodingForms.ViewModels
 {
    public class CompanyViewModel
     {
-        [Display(Name = "شناسه")]
+        [Display(AutoGenerateField =false)]
         public int ID { get; set; }
         [Display(Name = "کد")]
         public byte CompnayIndex { get; set; }

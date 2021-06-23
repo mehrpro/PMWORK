@@ -18,10 +18,27 @@ namespace PMWORK
         {
             InitializeComponent();
         }
+        private void ShowForms(object obj)
+        {
+            foreach (Form x in this.MdiChildren)
+            {
+                x.Close();
+            }
+
+            Form frm = (Form)obj;
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.ControlBox = false;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+
+        }
+
 
         private void itmCompany_Click(object sender, EventArgs e)
         {
-            var frm = new CompanyPartial();
+            ShowForms(new CompaniesForm());
+
         }
     }
 }

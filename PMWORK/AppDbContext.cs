@@ -1,11 +1,8 @@
-﻿
-
-
-using PMWORK.Entities;
+﻿using PMWORK.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
-namespace NetSystem.Models
+namespace PMWORK
 {
     public class AppDbContext : DbContext
     {
@@ -25,12 +22,12 @@ namespace NetSystem.Models
             builder.Entity<ApplicationUser>().Property(x => x.UserName).IsRequired().HasMaxLength(20);
             builder.Entity<ApplicationUser>().Property(x => x.UserPassword).IsRequired().HasMaxLength(100);
             builder.Entity<ApplicationUser>()
-                .HasMany<RequestRepair>(x => x.RequestRepairs)
+                .HasMany(x => x.RequestRepairs)
                 .WithRequired(x => x.ApplicationUser)
                 .HasForeignKey(x => x.UserID_FK)
                 .WillCascadeOnDelete(false);
             builder.Entity<ApplicationUser>()
-                .HasMany<Coding>(x => x.Codings)
+                .HasMany(x => x.Codings)
                 .WithRequired(x => x.ApplicationUser)
                 .HasForeignKey(x => x.UserID_FK)
                 .WillCascadeOnDelete(false);
@@ -43,7 +40,7 @@ namespace NetSystem.Models
             builder.Entity<MenuGroup>().Property(x => x.GroupID).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             builder.Entity<MenuGroup>().Property(x => x.MenuGroupTitle).IsRequired().HasMaxLength(100);
             builder.Entity<MenuGroup>()
-                .HasMany<MenuItem>(x => x.MenuItems)
+                .HasMany(x => x.MenuItems)
                 .WithRequired(x => x.MenuGroup)
                 .HasForeignKey(x => x.GroupID_FK)
                 .WillCascadeOnDelete(false);
@@ -92,7 +89,7 @@ namespace NetSystem.Models
             builder.Entity<Applicant>().Property(x => x.ApplicantTitle).IsRequired().HasMaxLength(150);
             builder.Entity<Applicant>().Property(x => x.Description).HasMaxLength(250);
             builder.Entity<Applicant>()
-                .HasMany<RequestRepair>(x => x.RequestRepairs)
+                .HasMany(x => x.RequestRepairs)
                 .WithRequired(x => x.Applicant)
                 .HasForeignKey(x => x.ApplicantID_FK)
                 .WillCascadeOnDelete(false);
@@ -105,17 +102,17 @@ namespace NetSystem.Models
             builder.Entity<Company>().Property(x => x.CompanyTiltle).IsRequired().HasMaxLength(150);
             builder.Entity<Company>().Property(x => x.Description).HasMaxLength(250);
             builder.Entity<Company>()
-                .HasMany<Group>(x => x.Groups)
+                .HasMany(x => x.Groups)
                 .WithRequired(x => x.Company)
                 .HasForeignKey(x => x.CompanyID_FK)
                 .WillCascadeOnDelete(false);
             builder.Entity<Company>()
-    .HasMany<SubGroup>(x => x.SubGroups)
+    .HasMany(x => x.SubGroups)
     .WithRequired(x => x.Company)
     .HasForeignKey(x => x.CompanyID_FK)
     .WillCascadeOnDelete(false);
             builder.Entity<Company>()
-    .HasMany<Coding>(x => x.Codings)
+    .HasMany(x => x.Codings)
     .WithRequired(x => x.Company)
     .HasForeignKey(x => x.CompanyID_FK)
     .WillCascadeOnDelete(false);
@@ -214,7 +211,7 @@ namespace NetSystem.Models
             builder.Entity<UnitOfMeasurement>().Property(u => u.Unit).HasMaxLength(150).IsRequired();
             builder.Entity<UnitOfMeasurement>().Property(u => u.Description).HasMaxLength(250);
             builder.Entity<UnitOfMeasurement>()
-                .HasMany<ConsumablePart>(x => x.ConsumableParts)
+                .HasMany(x => x.ConsumableParts)
                 .WithRequired(x => x.UnitOfMeasurement)
                 .HasForeignKey(x => x.UnitID_FK)
                 .WillCascadeOnDelete(false);
