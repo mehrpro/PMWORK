@@ -40,5 +40,25 @@ namespace PMWORK
             ShowForms(new CompaniesForm());
 
         }
+
+        private void itmGroups_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itmSubGroups_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itmCodings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itmUnits_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

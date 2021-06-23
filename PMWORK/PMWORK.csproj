@@ -67,13 +67,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="CodingForms\CodingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodingForms\CodingForm.Designer.cs">
+      <DependentUpon>CodingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CodingForms\CompaniesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CodingForms\CompaniesForm.Designer.cs">
       <DependentUpon>CompaniesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CodingForms\GroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodingForms\GroupForm.Designer.cs">
+      <DependentUpon>GroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodingForms\SubGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodingForms\SubGroupForm.Designer.cs">
+      <DependentUpon>SubGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodingForms\UnitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodingForms\UnitForm.Designer.cs">
+      <DependentUpon>UnitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CodingForms\ViewModels\CompanyViewModel.cs" />
+    <Compile Include="CodingForms\ViewModels\UnitViewModel.cs" />
     <Compile Include="Entities\Applicant.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Cleam.cs" />
@@ -89,11 +114,16 @@
     <Compile Include="Entities\TypeofRepair.cs" />
     <Compile Include="Entities\UnitOfMeasurement.cs" />
     <Compile Include="Entities\WorkOrder.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmLogin.resx</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -117,10 +147,13 @@
     <EmbeddedResource Include="CodingForms\CompaniesForm.resx">
       <DependentUpon>CompaniesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="CodingForms\UnitForm.resx">
+      <DependentUpon>UnitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginForm1.Designer.cs</LastGenOutput>
+      <LastGenOutput>frmLogin1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -150,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrasturcture\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
