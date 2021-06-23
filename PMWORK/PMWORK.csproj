@@ -98,6 +98,7 @@
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CodingForms\ViewModels\CompanyViewModel.cs" />
+    <Compile Include="CodingForms\ViewModels\SubGroupViewModel.cs" />
     <Compile Include="CodingForms\ViewModels\UnitViewModel.cs" />
     <Compile Include="Entities\Applicant.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
