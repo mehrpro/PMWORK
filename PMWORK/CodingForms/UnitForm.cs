@@ -61,10 +61,10 @@ namespace PMWORK.CodingForms
                 db.SaveChanges();
                 UpdateList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                var err = ex.Message;
             }
         }
     }

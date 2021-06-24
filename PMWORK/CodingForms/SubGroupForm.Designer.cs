@@ -29,10 +29,18 @@ namespace PMWORK.CodingForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // SubGroupForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "SubGroupForm";
+            this.Name = "SubGroupForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Text = "گروه فرعی";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

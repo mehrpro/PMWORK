@@ -43,22 +43,22 @@ namespace PMWORK
 
         private void itmGroups_Click(object sender, EventArgs e)
         {
-
+            ShowForms(new GroupForm());
         }
 
         private void itmSubGroups_Click(object sender, EventArgs e)
         {
-
+            ShowForms(new SubGroupForm());
         }
 
         private void itmCodings_Click(object sender, EventArgs e)
         {
-
+            ShowForms(new CodingForm());
         }
 
         private void itmUnits_Click(object sender, EventArgs e)
         {
-
+            ShowForms(new UnitForm());
         }
     }
 }

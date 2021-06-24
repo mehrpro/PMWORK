@@ -61,16 +61,16 @@ namespace PMWORK.CodingForms
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(555, 139);
+            this.panelControl1.Size = new System.Drawing.Size(773, 127);
             this.panelControl1.TabIndex = 0;
             // 
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Location = new System.Drawing.Point(337, 90);
+            this.simpleButton2.Location = new System.Drawing.Point(555, 85);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 30);
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
             this.simpleButton2.TabIndex = 5;
             this.simpleButton2.Text = "بستن";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -78,10 +78,10 @@ namespace PMWORK.CodingForms
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(418, 90);
+            this.simpleButton1.Location = new System.Drawing.Point(636, 85);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 4;
             this.simpleButton1.Text = "ذخیره";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -89,40 +89,40 @@ namespace PMWORK.CodingForms
             // txtDescription
             // 
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.Location = new System.Drawing.Point(87, 60);
+            this.txtDescription.Location = new System.Drawing.Point(306, 57);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Parmida_ActivePlusMultiKeys = false;
-            this.txtDescription.Size = new System.Drawing.Size(406, 24);
+            this.txtDescription.Size = new System.Drawing.Size(405, 20);
             this.txtDescription.TabIndex = 3;
             // 
             // txtUnitTitle
             // 
             this.txtUnitTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUnitTitle.Location = new System.Drawing.Point(312, 29);
+            this.txtUnitTitle.Location = new System.Drawing.Point(555, 29);
             this.txtUnitTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUnitTitle.Name = "txtUnitTitle";
             this.txtUnitTitle.Parmida_ActivePlusMultiKeys = false;
-            this.txtUnitTitle.Size = new System.Drawing.Size(181, 24);
+            this.txtUnitTitle.Size = new System.Drawing.Size(156, 20);
             this.txtUnitTitle.TabIndex = 2;
             // 
             // labelControl2
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Location = new System.Drawing.Point(499, 63);
+            this.labelControl2.Location = new System.Drawing.Point(717, 60);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(39, 17);
+            this.labelControl2.Size = new System.Drawing.Size(40, 13);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "توضیحات";
             // 
             // labelControl1
             // 
             this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl1.Location = new System.Drawing.Point(499, 32);
+            this.labelControl1.Location = new System.Drawing.Point(717, 32);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(24, 17);
+            this.labelControl1.Size = new System.Drawing.Size(26, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "عنوان";
             // 
@@ -130,10 +130,10 @@ namespace PMWORK.CodingForms
             // 
             this.panelControl2.Controls.Add(this.dgvUnit);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 139);
+            this.panelControl2.Location = new System.Drawing.Point(0, 127);
             this.panelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(555, 450);
+            this.panelControl2.Size = new System.Drawing.Size(773, 285);
             this.panelControl2.TabIndex = 1;
             // 
             // dgvUnit
@@ -144,7 +144,7 @@ namespace PMWORK.CodingForms
             this.dgvUnit.MainView = this.gvUnit;
             this.dgvUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvUnit.Name = "dgvUnit";
-            this.dgvUnit.Size = new System.Drawing.Size(551, 446);
+            this.dgvUnit.Size = new System.Drawing.Size(769, 281);
             this.dgvUnit.TabIndex = 0;
             this.dgvUnit.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvUnit});
@@ -158,9 +158,10 @@ namespace PMWORK.CodingForms
             // 
             // UnitForm
             // 
+            this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 589);
+            this.ClientSize = new System.Drawing.Size(773, 412);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Font = new System.Drawing.Font("B Yekan", 8.25F);

@@ -100,6 +100,7 @@
     <Compile Include="CodingForms\ViewModels\CompanyViewModel.cs" />
     <Compile Include="CodingForms\ViewModels\SubGroupViewModel.cs" />
     <Compile Include="CodingForms\ViewModels\UnitViewModel.cs" />
+    <Compile Include="ComboBoxBaseClass.cs" />
     <Compile Include="Entities\Applicant.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Cleam.cs" />
@@ -147,6 +148,12 @@
     </Compile>
     <EmbeddedResource Include="CodingForms\CompaniesForm.resx">
       <DependentUpon>CompaniesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodingForms\GroupForm.resx">
+      <DependentUpon>GroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodingForms\SubGroupForm.resx">
+      <DependentUpon>SubGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CodingForms\UnitForm.resx">
       <DependentUpon>UnitForm.cs</DependentUpon>
