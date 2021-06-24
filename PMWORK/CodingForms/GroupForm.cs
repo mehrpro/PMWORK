@@ -25,7 +25,7 @@ namespace PMWORK.CodingForms
             cbxCompany.Properties.DataSource = db.Companies
                 .Select(s=> new ComboBoxBaseClass()
                 {ID = s.ID,Title = s.CompanyTiltle , Tag=s.CompnayIndex.ToString()}).ToList();            
-            cbxCompany.Refresh();
+            
 
         }
 

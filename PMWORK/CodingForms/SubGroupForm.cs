@@ -14,29 +14,74 @@ namespace PMWORK.CodingForms
     public partial class SubGroupForm : DevExpress.XtraEditors.XtraForm
     {
         private AppDbContext db;
+        private ComboBoxBaseClass _selectCompany;
+        private ComboBoxBaseClass _selectGroup;
+
         public SubGroupForm()
         {
             InitializeComponent();
             db = new AppDbContext();
+            cbxCompany.Properties.DisplayMember = "Title";
+            cbxCompany.Properties.ValueMember = "ID";
+
+            cbxGroup.Properties.DisplayMember = "Title";
+            cbxGroup.Properties.ValueMember = "ID";
+
+            cbxCompany.Properties.DataSource = db.Companies
+                .Select(s => new ComboBoxBaseClass()
+                { ID = s.ID, Title = s.CompanyTiltle, Tag = s.CompnayIndex.ToString() }).ToList();
+  
+        }
+
+        public void cbxGroupList(int id)
+        {
+            cbxGroup.Properties.DataSource = db.Groups.Where(g=>g.CompanyID_FK == id)
+                .Select(s => new ComboBoxBaseClass()
+                { 
+                    ID = s.ID,
+                    Title = s.GroupTitle,
+                    Tag = s.GroupIndex.ToString()
+                }).ToList();
         }
 
         private void UpdateList(int companyid,int group)
         {
-            var qry = db.SubGroups.Where(x=>x.CompanyID_FK == companyid && x.GroupID_FK == group).ToList();
-            var list = new List<SubGroup>();
-            if (qry.Count > 0)
+            dgvSubGroup.DataSource = db.SubGroups.Where(x=>x.CompanyID_FK == companyid && x.GroupID_FK == group).ToList();
+            gvSubGroup.RefreshData();
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void cbxCompany_EditValueChanged(object sender, EventArgs e)
+        {
+             _selectCompany = (ComboBoxBaseClass)cbxCompany.GetSelectedDataRow();
+            if (_selectCompany == null)
             {
-                foreach (var item in qry)
-                {
-                    list.Add(new SubGroup()
-                    {
-                        ID = item.ID,
-                        SubGroupIndex = item.SubGroupIndex,
-                        SubGroupTitle = item.SubGroupTitle,
-                        Description = item.Description
-                    });
-                }
+                cbxGroup.EditValue = null;
+                cbxGroup.Properties.DataSource = null;                
+                return;
             }
+            cbxGroupList(_selectCompany.ID);
+            txtCompanyIndex.Text = _selectCompany.Tag.ToString();
+
+        }
+
+        private void cbxGroup_EditValueChanged(object sender, EventArgs e)
+        {
+             _selectGroup = (ComboBoxBaseClass)cbxGroup.GetSelectedDataRow();
+            if (_selectGroup == null)
+            {
+                dgvSubGroup.DataSource = null;
+                dgvSubGroup.Refresh();
+                return;
+            }
+            UpdateList(_selectCompany.ID, _selectGroup.ID);
+            txtGroupIndex.Text = _selectGroup.Tag.ToString();
+
         }
     }
 }
