@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace PMWORK.CodingForms
 {
@@ -16,6 +17,8 @@ namespace PMWORK.CodingForms
         private AppDbContext db;
         private ComboBoxBaseClass _selectCompany;
         private ComboBoxBaseClass _selectGroup;
+        private SubGroup SelectRow { get; set; }
+
 
         public SubGroupForm()
         {
@@ -30,58 +33,144 @@ namespace PMWORK.CodingForms
             cbxCompany.Properties.DataSource = db.Companies
                 .Select(s => new ComboBoxBaseClass()
                 { ID = s.ID, Title = s.CompanyTiltle, Tag = s.CompnayIndex.ToString() }).ToList();
-  
+
         }
 
         public void cbxGroupList(int id)
         {
-            cbxGroup.Properties.DataSource = db.Groups.Where(g=>g.CompanyID_FK == id)
+            cbxGroup.Properties.DataSource = db.Groups.Where(g => g.CompanyID_FK == id)
                 .Select(s => new ComboBoxBaseClass()
-                { 
+                {
                     ID = s.ID,
                     Title = s.GroupTitle,
                     Tag = s.GroupIndex.ToString()
                 }).ToList();
         }
 
-        private void UpdateList(int companyid,int group)
+        private void UpdateList(int companyid, int group)
         {
-            dgvSubGroup.DataSource = db.SubGroups.Where(x=>x.CompanyID_FK == companyid && x.GroupID_FK == group).ToList();
-            gvSubGroup.RefreshData();
+            dgvSubGroupList.DataSource = db.SubGroups.Where(x => x.CompanyID_FK == companyid && x.GroupID_FK == group).ToList();
+            gvGroup.RefreshData();
+            LastGroupIndex();
 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            if (btnClose.Text == "انصراف")
+            {
+                ClearControlers();
+            }
+            else
+                Close();
+
         }
 
         private void cbxCompany_EditValueChanged(object sender, EventArgs e)
         {
-             _selectCompany = (ComboBoxBaseClass)cbxCompany.GetSelectedDataRow();
+            _selectCompany = (ComboBoxBaseClass)cbxCompany.GetSelectedDataRow();
             if (_selectCompany == null)
             {
                 cbxGroup.EditValue = null;
-                cbxGroup.Properties.DataSource = null;                
+                cbxGroup.Properties.DataSource = null;
                 return;
             }
             cbxGroupList(_selectCompany.ID);
-            txtCompanyIndex.Text = _selectCompany.Tag.ToString();
+            txtCompanyIndex.Text = _selectCompany.Tag;
 
         }
 
         private void cbxGroup_EditValueChanged(object sender, EventArgs e)
         {
-             _selectGroup = (ComboBoxBaseClass)cbxGroup.GetSelectedDataRow();
+            _selectGroup = (ComboBoxBaseClass)cbxGroup.GetSelectedDataRow();
             if (_selectGroup == null)
             {
-                dgvSubGroup.DataSource = null;
-                dgvSubGroup.Refresh();
+                dgvSubGroupList.DataSource = null;
+                dgvSubGroupList.Refresh();
                 return;
             }
             UpdateList(_selectCompany.ID, _selectGroup.ID);
             txtGroupIndex.Text = _selectGroup.Tag.ToString();
 
         }
+
+        private void ClearControlers()
+        {
+            txtDescription.ResetText();
+            txtSubGroupTitle.ResetText();
+            LastGroupIndex();
+            SelectRow = null;
+            cbxGroup.ReadOnly = cbxCompany.ReadOnly = false;
+            btnClose.Text = "بستن";
+
+
+        }
+
+        private void LastGroupIndex()
+        {
+            var qry = db.SubGroups.AsNoTracking().Select(x => x.SubGroupIndex).ToArray();
+            var last = qry.Max();
+            numSubGroup.EditValue = last + 1;
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            if (cbxCompany.ReadOnly && cbxGroup.ReadOnly)
+            {
+                var select = db.SubGroups.Find(SelectRow.ID);
+                select.SubGroupTitle = txtSubGroupTitle.Text.Trim();
+                select.Description = txtDescription.Text.Trim();
+            }
+            else
+            {
+                var obj = new SubGroup
+                {
+                    CompanyID_FK = Convert.ToInt32(cbxCompany.EditValue),
+                    GroupID_FK = Convert.ToInt32(cbxGroup.EditValue),
+                    SubGroupIndex = Convert.ToByte(numSubGroup.EditValue),
+                    SubGroupTitle = txtSubGroupTitle.Text.Trim(),
+                    Description = txtDescription.Text.Trim(),
+                };
+                db.SubGroups.Add(obj);
+
+
+            }
+            db.SaveChanges();
+            UpdateList(_selectCompany.ID, _selectGroup.ID);
+            ClearControlers();
+
+
+        }
+
+        private void btnSelect_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (gvSubGroupList.GetFocusedRowCellValue("ID") != null)
+            {
+                var row = gvSubGroupList.GetFocusedRow();
+                SelectRow = (SubGroup)row;
+                txtSubGroupTitle.EditValue = SelectRow.SubGroupTitle;
+                txtDescription.EditValue = SelectRow.Description;
+                numSubGroup.EditValue = SelectRow.SubGroupIndex;
+                cbxGroup.ReadOnly = cbxCompany.ReadOnly = true;
+                btnClose.Text = "انصراف";
+            }
+        }
+
+
+
+        //if (gridView2.GetFocusedRowCellValue("ID") != null)
+        //{
+        //    var sel = gridView2.GetFocusedRow();
+        //    var idBomList = (BomList)sel;
+        //    var id = idBomList.ID;
+        //    bomList.Remove(idBomList);
+        //    var ide = _emBoms.Single(x => x.ID == id);
+        //    _emBoms.Remove(ide);
+        //    dgvListBom.DataSource = bomList;
+        //    gridView2.RefreshData();
+        //}
+
+
     }
 }
