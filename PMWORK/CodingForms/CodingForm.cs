@@ -70,12 +70,64 @@ namespace PMWORK.CodingForms
                 }).ToList();
         }
 
-        private void CodeBox()
+        public void CodeList()
         {
-            if(_selectCompany.ID > 0 && _selectCompany != null)
+            if (_selectCompany != null && _selectGroup != null && _selectSubGroup != null)
             {
+                dgvCodeList.DataSource = db.Codings.Where(a =>
+                a.CompanyID_FK == _selectCompany.ID &&
+                a.GroupID_FK == _selectGroup.ID &&
+                a.SubGroupID_FK == _selectSubGroup.ID).ToList();
 
             }
+            else if (_selectCompany != null && _selectGroup != null)
+            {
+                dgvCodeList.DataSource = db.Codings.Where(a =>
+                a.CompanyID_FK == _selectCompany.ID &&
+                a.GroupID_FK == _selectGroup.ID).ToList();
+            }
+            else if (_selectCompany != null && _selectGroup != null && _selectSubGroup != null)
+            {
+                dgvCodeList.DataSource = db.Codings.Where(a =>
+                a.CompanyID_FK == _selectCompany.ID).ToList();
+            }
+            else
+            {
+                dgvCodeList.DataSource = db.Codings.ToList();
+            }
+
+        }
+
+        private void CodeBox()
+        {
+            CodeList();
+            string companyStr , groupStr, subgroupStr;
+            companyStr = groupStr = subgroupStr = "";
+
+            if (_selectCompany != null)
+            {
+                if (Convert.ToInt32(_selectCompany.ID) > 0)
+                {
+                    companyStr = Convert.ToInt32(_selectCompany.Tag).ToString();
+                }
+            }
+            if (_selectGroup != null)
+            {
+                if (Convert.ToInt32(_selectGroup.ID) > 0)
+                {
+                    groupStr = Convert.ToInt32(_selectGroup.Tag).ToString();
+                }
+            }
+            if (_selectSubGroup != null)
+            {
+                if (Convert.ToInt32(_selectSubGroup.ID) > 0)
+                {
+                    subgroupStr = Convert.ToInt32(_selectSubGroup.Tag).ToString("00");
+                }
+
+            }
+            txtCode.Text = companyStr + groupStr + subgroupStr;
+
         }
 
         private void cbxCompany_EditValueChanged(object sender, EventArgs e)
@@ -85,9 +137,16 @@ namespace PMWORK.CodingForms
             {
                 cbxGroup.EditValue = null;
                 cbxGroup.Properties.DataSource = null;
+                cbxSubGroup.EditValue = null;
+                cbxSubGroup.Properties.DataSource = null;
                 return;
             }
+            cbxGroup.EditValue = null;
+            cbxGroup.Properties.DataSource = null;
+            cbxSubGroup.EditValue = null;
+            cbxSubGroup.Properties.DataSource = null;
             cbxGroupList(_selectCompany.ID);
+            CodeBox();
         }
 
         private void cbxGroup_EditValueChanged(object sender, EventArgs e)
@@ -99,12 +158,18 @@ namespace PMWORK.CodingForms
                 cbxSubGroup.Properties.DataSource = null;
                 return;
             }
-            cbxSubGroupList(_selectCompany.ID,_selectGroup.ID);
+            cbxSubGroupList(_selectCompany.ID,_selectGroup.ID); CodeBox();
         }
 
         private void cbxSubGroup_EditValueChanged(object sender, EventArgs e)
         {
-
+            _selectSubGroup = (ComboBoxBaseClass)cbxSubGroup.GetSelectedDataRow();
+            if (_selectGroup == null)
+            {              
+                return;
+            }
+            cbxSubGroupList(_selectCompany.ID, _selectGroup.ID);
+            CodeBox();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
