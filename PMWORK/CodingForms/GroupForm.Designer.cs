@@ -97,7 +97,7 @@ namespace PMWORK.CodingForms
             this.btnClose.Location = new System.Drawing.Point(432, 126);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 7;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "بستن";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -107,7 +107,7 @@ namespace PMWORK.CodingForms
             this.btnSave.Location = new System.Drawing.Point(513, 126);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "ذخیره";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -117,7 +117,7 @@ namespace PMWORK.CodingForms
             this.labelControl3.Location = new System.Drawing.Point(594, 25);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(64, 13);
-            this.labelControl3.TabIndex = 5;
+            this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "کد گروه اصلی";
             // 
             // cbxCompany
@@ -130,7 +130,7 @@ namespace PMWORK.CodingForms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxCompany.Properties.PopupView = this.searchLookUpEdit1View;
             this.cbxCompany.Size = new System.Drawing.Size(189, 20);
-            this.cbxCompany.TabIndex = 4;
+            this.cbxCompany.TabIndex = 1;
             this.cbxCompany.EditValueChanged += new System.EventHandler(this.cbxCompany_EditValueChanged);
             // 
             // searchLookUpEdit1View
@@ -147,7 +147,7 @@ namespace PMWORK.CodingForms
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Parmida_ActivePlusMultiKeys = false;
             this.txtDescription.Size = new System.Drawing.Size(492, 20);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabIndex = 8;
             // 
             // txtGroupTitle
             // 
@@ -156,7 +156,7 @@ namespace PMWORK.CodingForms
             this.txtGroupTitle.Name = "txtGroupTitle";
             this.txtGroupTitle.Parmida_ActivePlusMultiKeys = false;
             this.txtGroupTitle.Size = new System.Drawing.Size(189, 20);
-            this.txtGroupTitle.TabIndex = 3;
+            this.txtGroupTitle.TabIndex = 6;
             // 
             // labelControl4
             // 
@@ -164,7 +164,7 @@ namespace PMWORK.CodingForms
             this.labelControl4.Location = new System.Drawing.Point(594, 103);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(40, 13);
-            this.labelControl4.TabIndex = 1;
+            this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "توضیحات";
             // 
             // txtCompanyIndex
@@ -185,7 +185,7 @@ namespace PMWORK.CodingForms
             this.labelControl2.Location = new System.Drawing.Point(594, 77);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(49, 13);
-            this.labelControl2.TabIndex = 1;
+            this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "عنوان گروه";
             // 
             // labelControl1
@@ -194,7 +194,7 @@ namespace PMWORK.CodingForms
             this.labelControl1.Location = new System.Drawing.Point(594, 51);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(64, 13);
-            this.labelControl1.TabIndex = 0;
+            this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "کد گروه اصلی";
             // 
             // numGroup
@@ -218,7 +218,7 @@ namespace PMWORK.CodingForms
             this.numGroup.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.numGroup.Properties.ReadOnly = true;
             this.numGroup.Size = new System.Drawing.Size(58, 20);
-            this.numGroup.TabIndex = 2;
+            this.numGroup.TabIndex = 4;
             // 
             // panelControl2
             // 

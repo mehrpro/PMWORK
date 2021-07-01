@@ -29,8 +29,14 @@ namespace PMWORK.CodingForms
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnitForm));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.txtDescription = new DevExpress.XtraEditors.TextEdit();
             this.txtUnitTitle = new DevExpress.XtraEditors.TextEdit();
@@ -39,6 +45,11 @@ namespace PMWORK.CodingForms
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvUnit = new DevExpress.XtraGrid.GridControl();
             this.gvUnit = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.select = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Unit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnSelect = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
@@ -47,11 +58,12 @@ namespace PMWORK.CodingForms
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvUnit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSelect)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.simpleButton2);
+            this.panelControl1.Controls.Add(this.btnClose);
             this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.txtDescription);
             this.panelControl1.Controls.Add(this.txtUnitTitle);
@@ -64,16 +76,16 @@ namespace PMWORK.CodingForms
             this.panelControl1.Size = new System.Drawing.Size(773, 127);
             this.panelControl1.TabIndex = 0;
             // 
-            // simpleButton2
+            // btnClose
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Location = new System.Drawing.Point(555, 85);
-            this.simpleButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 5;
-            this.simpleButton2.Text = "بستن";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(555, 85);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "بستن";
+            this.btnClose.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
@@ -104,7 +116,7 @@ namespace PMWORK.CodingForms
             this.txtUnitTitle.Name = "txtUnitTitle";
             this.txtUnitTitle.Parmida_ActivePlusMultiKeys = false;
             this.txtUnitTitle.Size = new System.Drawing.Size(156, 20);
-            this.txtUnitTitle.TabIndex = 2;
+            this.txtUnitTitle.TabIndex = 1;
             // 
             // labelControl2
             // 
@@ -113,7 +125,7 @@ namespace PMWORK.CodingForms
             this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(40, 13);
-            this.labelControl2.TabIndex = 1;
+            this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "توضیحات";
             // 
             // labelControl1
@@ -144,6 +156,8 @@ namespace PMWORK.CodingForms
             this.dgvUnit.MainView = this.gvUnit;
             this.dgvUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvUnit.Name = "dgvUnit";
+            this.dgvUnit.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.btnSelect});
             this.dgvUnit.Size = new System.Drawing.Size(769, 281);
             this.dgvUnit.TabIndex = 0;
             this.dgvUnit.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -151,10 +165,114 @@ namespace PMWORK.CodingForms
             // 
             // gvUnit
             // 
+            this.gvUnit.Appearance.ColumnFilterButton.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.ColumnFilterButton.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.ColumnFilterButtonActive.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.ColumnFilterButtonActive.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.CustomizationFormHint.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.CustomizationFormHint.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.DetailTip.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.DetailTip.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.Empty.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.Empty.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.EvenRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.EvenRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.FilterCloseButton.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.FilterCloseButton.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.FilterPanel.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.FilterPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.FixedLine.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.FixedLine.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.FocusedCell.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.FocusedCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.FocusedRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.FocusedRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.FooterPanel.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.FooterPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.GroupButton.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.GroupButton.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.GroupFooter.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.GroupFooter.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.GroupPanel.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.GroupPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.GroupRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.GroupRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.HideSelectionRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.HideSelectionRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.HorzLine.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.HorzLine.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.OddRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.OddRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.Preview.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.Preview.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.Row.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.RowSeparator.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.RowSeparator.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.SelectedRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.SelectedRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.TopNewRow.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.TopNewRow.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.VertLine.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.VertLine.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Appearance.ViewCaption.Options.UseTextOptions = true;
+            this.gvUnit.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvUnit.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.select,
+            this.ID,
+            this.Unit,
+            this.Description});
             this.gvUnit.DetailHeight = 457;
             this.gvUnit.FixedLineWidth = 3;
             this.gvUnit.GridControl = this.dgvUnit;
             this.gvUnit.Name = "gvUnit";
+            // 
+            // select
+            // 
+            this.select.ColumnEdit = this.btnSelect;
+            this.select.Name = "select";
+            this.select.Visible = true;
+            this.select.VisibleIndex = 0;
+            this.select.Width = 33;
+            // 
+            // ID
+            // 
+            this.ID.Caption = "شناسه";
+            this.ID.FieldName = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = true;
+            this.ID.VisibleIndex = 1;
+            this.ID.Width = 61;
+            // 
+            // Unit
+            // 
+            this.Unit.Caption = "عنوان";
+            this.Unit.FieldName = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.Visible = true;
+            this.Unit.VisibleIndex = 2;
+            this.Unit.Width = 216;
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            this.btnSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnSelect.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelect_ButtonClick);
+            // 
+            // Description
+            // 
+            this.Description.Caption = "توضیحات";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 3;
+            this.Description.Width = 441;
             // 
             // UnitForm
             // 
@@ -178,6 +296,7 @@ namespace PMWORK.CodingForms
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvUnit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSelect)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,7 +304,7 @@ namespace PMWORK.CodingForms
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit txtDescription;
         private DevExpress.XtraEditors.TextEdit txtUnitTitle;
@@ -194,5 +313,10 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraGrid.GridControl dgvUnit;
         private DevExpress.XtraGrid.Views.Grid.GridView gvUnit;
+        private DevExpress.XtraGrid.Columns.GridColumn select;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnSelect;
+        private DevExpress.XtraGrid.Columns.GridColumn ID;
+        private DevExpress.XtraGrid.Columns.GridColumn Unit;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
     }
 }

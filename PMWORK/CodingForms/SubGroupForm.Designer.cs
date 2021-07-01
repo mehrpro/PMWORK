@@ -51,6 +51,7 @@ namespace PMWORK.CodingForms
             this.txtCompanyIndex = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.numSubGroup = new DevExpress.XtraEditors.TextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvSubGroupList = new DevExpress.XtraGrid.GridControl();
             this.gvSubGroupList = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -60,7 +61,6 @@ namespace PMWORK.CodingForms
             this.SubGroupIndex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SubGroupTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.numSubGroup = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbxGroup.Properties)).BeginInit();
@@ -71,12 +71,12 @@ namespace PMWORK.CodingForms
             ((System.ComponentModel.ISupportInitialize)(this.txtSubGroupTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGroupIndex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCompanyIndex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSubGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubGroupList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSubGroupList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSelect)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSubGroup.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -107,7 +107,7 @@ namespace PMWORK.CodingForms
             this.btnClose.Location = new System.Drawing.Point(465, 151);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 18;
+            this.btnClose.TabIndex = 13;
             this.btnClose.Text = "بستن";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -117,7 +117,7 @@ namespace PMWORK.CodingForms
             this.btnSave.Location = new System.Drawing.Point(546, 151);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "ذخیره";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -127,7 +127,7 @@ namespace PMWORK.CodingForms
             this.labelControl5.Location = new System.Drawing.Point(627, 50);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(50, 13);
-            this.labelControl5.TabIndex = 16;
+            this.labelControl5.TabIndex = 3;
             this.labelControl5.Text = "گروه اصلی";
             // 
             // labelControl3
@@ -136,7 +136,7 @@ namespace PMWORK.CodingForms
             this.labelControl3.Location = new System.Drawing.Point(627, 24);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(31, 13);
-            this.labelControl3.TabIndex = 16;
+            this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "شرکت";
             // 
             // cbxGroup
@@ -149,7 +149,7 @@ namespace PMWORK.CodingForms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxGroup.Properties.PopupView = this.gvGroup;
             this.cbxGroup.Size = new System.Drawing.Size(189, 20);
-            this.cbxGroup.TabIndex = 15;
+            this.cbxGroup.TabIndex = 4;
             this.cbxGroup.EditValueChanged += new System.EventHandler(this.cbxGroup_EditValueChanged);
             // 
             // gvGroup
@@ -169,7 +169,7 @@ namespace PMWORK.CodingForms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxCompany.Properties.PopupView = this.searchLookUpEdit1View;
             this.cbxCompany.Size = new System.Drawing.Size(189, 20);
-            this.cbxCompany.TabIndex = 15;
+            this.cbxCompany.TabIndex = 1;
             this.cbxCompany.EditValueChanged += new System.EventHandler(this.cbxCompany_EditValueChanged);
             // 
             // searchLookUpEdit1View
@@ -186,7 +186,7 @@ namespace PMWORK.CodingForms
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Parmida_ActivePlusMultiKeys = false;
             this.txtDescription.Size = new System.Drawing.Size(492, 20);
-            this.txtDescription.TabIndex = 13;
+            this.txtDescription.TabIndex = 11;
             // 
             // txtSubGroupTitle
             // 
@@ -195,7 +195,7 @@ namespace PMWORK.CodingForms
             this.txtSubGroupTitle.Name = "txtSubGroupTitle";
             this.txtSubGroupTitle.Parmida_ActivePlusMultiKeys = false;
             this.txtSubGroupTitle.Size = new System.Drawing.Size(189, 20);
-            this.txtSubGroupTitle.TabIndex = 14;
+            this.txtSubGroupTitle.TabIndex = 9;
             // 
             // txtGroupIndex
             // 
@@ -207,7 +207,7 @@ namespace PMWORK.CodingForms
             this.txtGroupIndex.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtGroupIndex.Properties.ReadOnly = true;
             this.txtGroupIndex.Size = new System.Drawing.Size(55, 20);
-            this.txtGroupIndex.TabIndex = 11;
+            this.txtGroupIndex.TabIndex = 5;
             // 
             // labelControl4
             // 
@@ -215,7 +215,7 @@ namespace PMWORK.CodingForms
             this.labelControl4.Location = new System.Drawing.Point(627, 128);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(40, 13);
-            this.labelControl4.TabIndex = 9;
+            this.labelControl4.TabIndex = 10;
             this.labelControl4.Text = "توضیحات";
             // 
             // txtCompanyIndex
@@ -228,7 +228,7 @@ namespace PMWORK.CodingForms
             this.txtCompanyIndex.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtCompanyIndex.Properties.ReadOnly = true;
             this.txtCompanyIndex.Size = new System.Drawing.Size(55, 20);
-            this.txtCompanyIndex.TabIndex = 11;
+            this.txtCompanyIndex.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -236,7 +236,7 @@ namespace PMWORK.CodingForms
             this.labelControl2.Location = new System.Drawing.Point(627, 102);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(80, 13);
-            this.labelControl2.TabIndex = 10;
+            this.labelControl2.TabIndex = 8;
             this.labelControl2.Text = "عنوان گروه فرعی";
             // 
             // labelControl1
@@ -245,8 +245,30 @@ namespace PMWORK.CodingForms
             this.labelControl1.Location = new System.Drawing.Point(627, 76);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(65, 13);
-            this.labelControl1.TabIndex = 8;
+            this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "کد گروه فرعی";
+            // 
+            // numSubGroup
+            // 
+            this.numSubGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numSubGroup.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numSubGroup.Location = new System.Drawing.Point(546, 73);
+            this.numSubGroup.Name = "numSubGroup";
+            this.numSubGroup.Parmida_ActivePlusMultiKeys = false;
+            this.numSubGroup.Properties.Appearance.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numSubGroup.Properties.AppearanceDisabled.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numSubGroup.Properties.AppearanceFocused.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numSubGroup.Properties.AppearanceReadOnly.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numSubGroup.Properties.DisplayFormat.FormatString = "00";
+            this.numSubGroup.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.numSubGroup.Properties.Mask.EditMask = "N00";
+            this.numSubGroup.Properties.ReadOnly = true;
+            this.numSubGroup.Size = new System.Drawing.Size(75, 20);
+            this.numSubGroup.TabIndex = 7;
             // 
             // panelControl2
             // 
@@ -395,28 +417,6 @@ namespace PMWORK.CodingForms
             this.Description.VisibleIndex = 4;
             this.Description.Width = 226;
             // 
-            // numSubGroup
-            // 
-            this.numSubGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numSubGroup.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numSubGroup.Location = new System.Drawing.Point(546, 73);
-            this.numSubGroup.Name = "numSubGroup";
-            this.numSubGroup.Parmida_ActivePlusMultiKeys = false;
-            this.numSubGroup.Properties.Appearance.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.numSubGroup.Properties.AppearanceDisabled.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.numSubGroup.Properties.AppearanceFocused.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.numSubGroup.Properties.AppearanceReadOnly.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.numSubGroup.Properties.DisplayFormat.FormatString = "00";
-            this.numSubGroup.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.numSubGroup.Properties.Mask.EditMask = "N00";
-            this.numSubGroup.Properties.ReadOnly = true;
-            this.numSubGroup.Size = new System.Drawing.Size(75, 20);
-            this.numSubGroup.TabIndex = 12;
-            // 
             // SubGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,12 +438,12 @@ namespace PMWORK.CodingForms
             ((System.ComponentModel.ISupportInitialize)(this.txtSubGroupTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGroupIndex.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCompanyIndex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSubGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubGroupList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSubGroupList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSelect)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSubGroup.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

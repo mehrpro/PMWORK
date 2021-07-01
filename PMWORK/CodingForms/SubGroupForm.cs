@@ -17,7 +17,7 @@ namespace PMWORK.CodingForms
         private AppDbContext db;
         private ComboBoxBaseClass _selectCompany;
         private ComboBoxBaseClass _selectGroup;
-        private SubGroup SelectRow { get; set; }
+        private SubGroup Row { get; set; }
 
 
         public SubGroupForm()
@@ -33,6 +33,8 @@ namespace PMWORK.CodingForms
             cbxCompany.Properties.DataSource = db.Companies
                 .Select(s => new ComboBoxBaseClass()
                 { ID = s.ID, Title = s.CompanyTiltle, Tag = s.CompnayIndex.ToString() }).ToList();
+
+
 
         }
 
@@ -100,7 +102,7 @@ namespace PMWORK.CodingForms
             txtDescription.ResetText();
             txtSubGroupTitle.ResetText();
             LastGroupIndex();
-            SelectRow = null;
+            Row = null;
             cbxGroup.ReadOnly = cbxCompany.ReadOnly = false;
             btnClose.Text = "بستن";
 
@@ -111,16 +113,15 @@ namespace PMWORK.CodingForms
         {
             int last = 0;
             var qry = db.SubGroups.AsNoTracking().Select(x => x.SubGroupIndex).ToList();
-            if(qry.Count() > 0) last = qry.Max();
+            if (qry.Count() > 0) last = qry.Max();
             numSubGroup.EditValue = last + 1;
-
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
 
             if (cbxCompany.ReadOnly && cbxGroup.ReadOnly)
             {
-                var select = db.SubGroups.Find(SelectRow.ID);
+                var select = db.SubGroups.Find(Row.ID);
                 select.SubGroupTitle = txtSubGroupTitle.Text.Trim();
                 select.Description = txtDescription.Text.Trim();
             }
@@ -150,10 +151,10 @@ namespace PMWORK.CodingForms
             if (gvSubGroupList.GetFocusedRowCellValue("ID") != null)
             {
                 var row = gvSubGroupList.GetFocusedRow();
-                SelectRow = (SubGroup)row;
-                txtSubGroupTitle.EditValue = SelectRow.SubGroupTitle;
-                txtDescription.EditValue = SelectRow.Description;
-                numSubGroup.EditValue = SelectRow.SubGroupIndex;
+                Row = (SubGroup)row;
+                txtSubGroupTitle.EditValue = Row.SubGroupTitle;
+                txtDescription.EditValue = Row.Description;
+                numSubGroup.EditValue = Row.SubGroupIndex;
                 cbxGroup.ReadOnly = cbxCompany.ReadOnly = true;
                 btnClose.Text = "انصراف";
             }

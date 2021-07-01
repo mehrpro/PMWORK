@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace PMWORK
 {
-    public partial class frmLogin : XtraForm
+    public partial class LoginForm : XtraForm
     {
-        public frmLogin()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -22,5 +22,7 @@ namespace PMWORK
         {
             var frm = new MainForm().ShowDialog();
         }
+
+     
     }
 }

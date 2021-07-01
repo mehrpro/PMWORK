@@ -1,7 +1,7 @@
 ﻿
 namespace PMWORK
 {
-    partial class frmLogin
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,7 +43,7 @@ namespace PMWORK
             this.lblUserName.Location = new System.Drawing.Point(435, 146);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(49, 20);
+            this.lblUserName.Size = new System.Drawing.Size(46, 13);
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "نام کاربری";
             // 
@@ -53,7 +53,7 @@ namespace PMWORK
             this.lblPassword.Location = new System.Drawing.Point(435, 175);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(39, 20);
+            this.lblPassword.Size = new System.Drawing.Size(32, 13);
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "گذرواژه";
             // 
@@ -85,8 +85,9 @@ namespace PMWORK
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "بستن";
             // 
-            // LoginForm
+            // frmLogin
             // 
+            this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(567, 440);
@@ -97,7 +98,7 @@ namespace PMWORK
             this.Controls.Add(this.lblUserName);
             this.Font = new System.Drawing.Font("B Yekan", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "LoginForm";
+            this.Name = "frmLogin";
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

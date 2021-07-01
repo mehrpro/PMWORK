@@ -97,8 +97,8 @@ namespace PMWORK.CodingForms
         private void LastGroupIndex()
         {
             int last = 0;
-            var qry = db.Groups.AsNoTracking().Select(x => x.GroupIndex).ToArray();
-            if (qry != null) last = qry.Max();           
+            var qry = db.Groups.AsNoTracking().Select(x => x.GroupIndex).ToList();
+            if (qry.Count() > 0) last = qry.Max();
             numGroup.EditValue = last + 1;
         }
 
