@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 using PMWORK.CodingForms.ViewModels;
+using PMWORK.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,72 +16,83 @@ namespace PMWORK.CodingForms
     public partial class CompaniesForm : DevExpress.XtraEditors.XtraForm
     {
         private AppDbContext db;
+        private Company Row { get; set; }
+
         public CompaniesForm()
         {
             InitializeComponent();
             db = new AppDbContext();
-          
             UpdateList();
         }
 
-        public  void UpdateList()
+        public void UpdateList()
         {
-            var result = new List<CompanyViewModel>();
-            var qry =  db.Companies.ToList();
-            if (qry.Count > 0)
-            {
-                foreach (var item in qry)
-                {
-                    result.Add(new CompanyViewModel()
-                    {
-                        ID = item.ID,
-                        CompnayIndex = item.CompnayIndex,
-                        CompanyTiltle = item.CompanyTiltle,
-                        Description = item.Description
-                    });                    
-                }
-                dgvCompany.DataSource = result;
-                dgvCompany.Refresh();
-            }
-            
-            //gridView1.Columns["ID"].Visible = false;
-
-            
+            dgvCompany.DataSource = db.Companies.AsNoTracking().ToList();
+            LastGroupIndex();
         }
 
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            if (btnClose.Text == "انصراف")
+            {
+                ClearControlers();
+            }
+            else
+                Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            var obj = new Entities.Company();
-            obj.CompnayIndex = Convert.ToByte( txtCompanyIndex.EditValue);
-            obj.CompanyTiltle = txtCompanyTitle.EditValue.ToString().Trim();
-            obj.Description = txtDescription.Text.ToString().Trim();       
-            db.Companies.Add(obj);
-            var result = db.SaveChanges();
+            if (btnClose.Text == "انصراف")
+            {
+                var select = db.Companies.Find(Row.ID);
+                select.CompanyTiltle = txtCompanyTitle.Text.Trim();
+                select.Description = txtDescription.Text.Trim();
+            }
+            else
+            {
+                var obj = new Company();
+                obj.CompnayIndex = Convert.ToByte(numCompanyIndex.EditValue);
+                obj.CompanyTiltle = txtCompanyTitle.EditValue.ToString().Trim();
+                obj.Description = txtDescription.Text.ToString().Trim();
+                db.Companies.Add(obj);
+            }
+            db.SaveChanges();
             UpdateList();
+            ClearControlers();
 
         }
 
-        private void gvCompany_RowCellClick(object sender, RowCellClickEventArgs e)
+        private void ClearControlers()
         {
-            var re = e.RowHandle;
+            txtDescription.ResetText();
+            txtCompanyTitle.ResetText();
+            LastGroupIndex();
+            Row = null;
+            btnClose.Text = "بستن";
         }
 
-        private void gvCompany_RowClick(object sender, RowClickEventArgs e)
+
+        private void LastGroupIndex()
         {
-            var ef = e.RowHandle.ToString();
-           
+            int last = 0;
+            var qry = db.Companies.AsNoTracking().Select(x => x.CompnayIndex).ToArray();
+            if (qry != null) last = qry.Max();
+            numCompanyIndex.EditValue = last + 1;
         }
 
-        private void dgvCompany_Click(object sender, EventArgs e)
+        private void btnSelectRow_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-
+            if (gvCompany.GetFocusedRowCellValue("ID") != null)
+            {
+                var row = gvCompany.GetFocusedRow();
+                Row = (Company)row;
+                numCompanyIndex.EditValue = Row.CompnayIndex;
+                txtCompanyTitle.EditValue = Row.CompanyTiltle;
+                txtDescription.EditValue = Row.Description;
+                btnClose.Text = "انصراف";
+            }
         }
     }
 }

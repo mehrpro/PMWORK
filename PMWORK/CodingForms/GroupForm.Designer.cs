@@ -29,6 +29,12 @@ namespace PMWORK.CodingForms
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupForm));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -45,6 +51,8 @@ namespace PMWORK.CodingForms
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvGroupList = new DevExpress.XtraGrid.GridControl();
             this.gvGroupList = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.SelectRow = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnSelectRow = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GroupIndex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GroupTitle = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,6 +69,7 @@ namespace PMWORK.CodingForms
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroupList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvGroupList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSelectRow)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -207,6 +216,7 @@ namespace PMWORK.CodingForms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.numGroup.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.numGroup.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.numGroup.Properties.ReadOnly = true;
             this.numGroup.Size = new System.Drawing.Size(58, 20);
             this.numGroup.TabIndex = 2;
             // 
@@ -225,6 +235,8 @@ namespace PMWORK.CodingForms
             this.dgvGroupList.Location = new System.Drawing.Point(2, 2);
             this.dgvGroupList.MainView = this.gvGroupList;
             this.dgvGroupList.Name = "dgvGroupList";
+            this.dgvGroupList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.btnSelectRow});
             this.dgvGroupList.Size = new System.Drawing.Size(681, 285);
             this.dgvGroupList.TabIndex = 0;
             this.dgvGroupList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -287,6 +299,7 @@ namespace PMWORK.CodingForms
             this.gvGroupList.Appearance.ViewCaption.Options.UseTextOptions = true;
             this.gvGroupList.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvGroupList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.SelectRow,
             this.ID,
             this.GroupIndex,
             this.GroupTitle,
@@ -295,25 +308,45 @@ namespace PMWORK.CodingForms
             this.gvGroupList.Name = "gvGroupList";
             this.gvGroupList.OptionsBehavior.ReadOnly = true;
             // 
+            // SelectRow
+            // 
+            this.SelectRow.ColumnEdit = this.btnSelectRow;
+            this.SelectRow.Name = "SelectRow";
+            this.SelectRow.Visible = true;
+            this.SelectRow.VisibleIndex = 0;
+            this.SelectRow.Width = 29;
+            // 
+            // btnSelectRow
+            // 
+            this.btnSelectRow.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject2.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject3.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject4.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.btnSelectRow.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnSelectRow.Name = "btnSelectRow";
+            this.btnSelectRow.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnSelectRow.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelectRow_ButtonClick);
+            // 
             // ID
             // 
             this.ID.Caption = "شناسه";
             this.ID.FieldName = "ID";
             this.ID.Name = "ID";
             this.ID.Visible = true;
-            this.ID.VisibleIndex = 0;
-            this.ID.Width = 103;
+            this.ID.VisibleIndex = 1;
+            this.ID.Width = 97;
             // 
             // GroupIndex
             // 
             this.GroupIndex.Caption = "کد گروه اصلی";
-            this.GroupIndex.DisplayFormat.FormatString = "00";
-            this.GroupIndex.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.GroupIndex.FieldName = "GroupIndex";
             this.GroupIndex.Name = "GroupIndex";
             this.GroupIndex.Visible = true;
-            this.GroupIndex.VisibleIndex = 1;
-            this.GroupIndex.Width = 138;
+            this.GroupIndex.VisibleIndex = 2;
+            this.GroupIndex.Width = 128;
             // 
             // GroupTitle
             // 
@@ -321,8 +354,8 @@ namespace PMWORK.CodingForms
             this.GroupTitle.FieldName = "GroupTitle";
             this.GroupTitle.Name = "GroupTitle";
             this.GroupTitle.Visible = true;
-            this.GroupTitle.VisibleIndex = 2;
-            this.GroupTitle.Width = 187;
+            this.GroupTitle.VisibleIndex = 3;
+            this.GroupTitle.Width = 177;
             // 
             // Description
             // 
@@ -330,8 +363,8 @@ namespace PMWORK.CodingForms
             this.Description.FieldName = "Description";
             this.Description.Name = "Description";
             this.Description.Visible = true;
-            this.Description.VisibleIndex = 3;
-            this.Description.Width = 235;
+            this.Description.VisibleIndex = 4;
+            this.Description.Width = 232;
             // 
             // GroupForm
             // 
@@ -356,6 +389,7 @@ namespace PMWORK.CodingForms
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroupList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvGroupList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSelectRow)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -382,5 +416,7 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraGrid.Columns.GridColumn GroupIndex;
         private DevExpress.XtraGrid.Columns.GridColumn GroupTitle;
         private DevExpress.XtraGrid.Columns.GridColumn Description;
+        private DevExpress.XtraGrid.Columns.GridColumn SelectRow;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnSelectRow;
     }
 }

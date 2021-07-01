@@ -29,6 +29,12 @@ namespace PMWORK.CodingForms
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompaniesForm));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -36,20 +42,27 @@ namespace PMWORK.CodingForms
             this.txtDescription = new DevExpress.XtraEditors.TextEdit();
             this.txtCompanyTitle = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCompanyIndex = new DevExpress.XtraEditors.SpinEdit();
+            this.numCompanyIndex = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvCompany = new DevExpress.XtraGrid.GridControl();
             this.gvCompany = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.SelectedRow = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnSelectRow = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CompnayIndex = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CompanyTiltle = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCompanyTitle.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompanyIndex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCompanyIndex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompany)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSelectRow)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -60,7 +73,7 @@ namespace PMWORK.CodingForms
             this.panelControl1.Controls.Add(this.txtDescription);
             this.panelControl1.Controls.Add(this.txtCompanyTitle);
             this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.txtCompanyIndex);
+            this.panelControl1.Controls.Add(this.numCompanyIndex);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -124,39 +137,40 @@ namespace PMWORK.CodingForms
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "توضیحات";
             // 
-            // txtCompanyIndex
+            // numCompanyIndex
             // 
-            this.txtCompanyIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCompanyIndex.EditValue = new decimal(new int[] {
+            this.numCompanyIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numCompanyIndex.EditValue = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.txtCompanyIndex.Location = new System.Drawing.Point(495, 18);
-            this.txtCompanyIndex.Name = "txtCompanyIndex";
-            this.txtCompanyIndex.Parmida_ActivePlusMultiKeys = false;
-            this.txtCompanyIndex.Properties.Appearance.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.txtCompanyIndex.Properties.AppearanceDisabled.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.txtCompanyIndex.Properties.AppearanceFocused.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.txtCompanyIndex.Properties.AppearanceReadOnly.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.txtCompanyIndex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.numCompanyIndex.Location = new System.Drawing.Point(495, 18);
+            this.numCompanyIndex.Name = "numCompanyIndex";
+            this.numCompanyIndex.Parmida_ActivePlusMultiKeys = false;
+            this.numCompanyIndex.Properties.Appearance.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numCompanyIndex.Properties.AppearanceDisabled.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numCompanyIndex.Properties.AppearanceFocused.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numCompanyIndex.Properties.AppearanceReadOnly.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.numCompanyIndex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtCompanyIndex.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtCompanyIndex.Properties.IsFloatValue = false;
-            this.txtCompanyIndex.Properties.Mask.EditMask = "N00";
-            this.txtCompanyIndex.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtCompanyIndex.Properties.MaxValue = new decimal(new int[] {
+            this.numCompanyIndex.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.numCompanyIndex.Properties.IsFloatValue = false;
+            this.numCompanyIndex.Properties.Mask.EditMask = "N00";
+            this.numCompanyIndex.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.numCompanyIndex.Properties.MaxValue = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.txtCompanyIndex.Properties.MinValue = new decimal(new int[] {
+            this.numCompanyIndex.Properties.MinValue = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.txtCompanyIndex.Size = new System.Drawing.Size(51, 20);
-            this.txtCompanyIndex.TabIndex = 1;
+            this.numCompanyIndex.Properties.ReadOnly = true;
+            this.numCompanyIndex.Size = new System.Drawing.Size(51, 20);
+            this.numCompanyIndex.TabIndex = 1;
             // 
             // labelControl2
             // 
@@ -182,11 +196,12 @@ namespace PMWORK.CodingForms
             this.dgvCompany.Location = new System.Drawing.Point(2, 2);
             this.dgvCompany.MainView = this.gvCompany;
             this.dgvCompany.Name = "dgvCompany";
+            this.dgvCompany.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.btnSelectRow});
             this.dgvCompany.Size = new System.Drawing.Size(643, 309);
             this.dgvCompany.TabIndex = 0;
             this.dgvCompany.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCompany});
-            this.dgvCompany.Click += new System.EventHandler(this.dgvCompany_Click);
             // 
             // gvCompany
             // 
@@ -244,11 +259,74 @@ namespace PMWORK.CodingForms
             this.gvCompany.Appearance.VertLine.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvCompany.Appearance.ViewCaption.Options.UseTextOptions = true;
             this.gvCompany.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvCompany.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.SelectedRow,
+            this.ID,
+            this.CompnayIndex,
+            this.CompanyTiltle,
+            this.Description});
             this.gvCompany.GridControl = this.dgvCompany;
             this.gvCompany.Name = "gvCompany";
             this.gvCompany.OptionsBehavior.ReadOnly = true;
             this.gvCompany.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
-            this.gvCompany.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvCompany_RowClick);
+            // 
+            // SelectedRow
+            // 
+            this.SelectedRow.ColumnEdit = this.btnSelectRow;
+            this.SelectedRow.Name = "SelectedRow";
+            this.SelectedRow.Visible = true;
+            this.SelectedRow.VisibleIndex = 0;
+            this.SelectedRow.Width = 28;
+            // 
+            // btnSelectRow
+            // 
+            this.btnSelectRow.AutoHeight = false;
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            serializableAppearanceObject5.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject6.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject7.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject8.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.btnSelectRow.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnSelectRow.Name = "btnSelectRow";
+            this.btnSelectRow.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnSelectRow.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelectRow_ButtonClick);
+            // 
+            // ID
+            // 
+            this.ID.Caption = "شناسه";
+            this.ID.FieldName = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = true;
+            this.ID.VisibleIndex = 1;
+            this.ID.Width = 103;
+            // 
+            // CompnayIndex
+            // 
+            this.CompnayIndex.Caption = "کد شرکت";
+            this.CompnayIndex.FieldName = "CompnayIndex";
+            this.CompnayIndex.Name = "CompnayIndex";
+            this.CompnayIndex.Visible = true;
+            this.CompnayIndex.VisibleIndex = 2;
+            this.CompnayIndex.Width = 87;
+            // 
+            // CompanyTiltle
+            // 
+            this.CompanyTiltle.Caption = "نام شرکت یا گروه";
+            this.CompanyTiltle.FieldName = "CompanyTiltle";
+            this.CompanyTiltle.Name = "CompanyTiltle";
+            this.CompanyTiltle.Visible = true;
+            this.CompanyTiltle.VisibleIndex = 3;
+            this.CompanyTiltle.Width = 198;
+            // 
+            // Description
+            // 
+            this.Description.Caption = "توضیحات";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 4;
+            this.Description.Width = 209;
             // 
             // CompaniesForm
             // 
@@ -265,11 +343,12 @@ namespace PMWORK.CodingForms
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCompanyTitle.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompanyIndex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCompanyIndex.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompany)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSelectRow)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -283,10 +362,16 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraEditors.TextEdit txtDescription;
         private DevExpress.XtraEditors.TextEdit txtCompanyTitle;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.SpinEdit txtCompanyIndex;
+        private DevExpress.XtraEditors.SpinEdit numCompanyIndex;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraGrid.GridControl dgvCompany;
         private DevExpress.XtraGrid.Views.Grid.GridView gvCompany;
+        private DevExpress.XtraGrid.Columns.GridColumn SelectedRow;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnSelectRow;
+        private DevExpress.XtraGrid.Columns.GridColumn ID;
+        private DevExpress.XtraGrid.Columns.GridColumn CompnayIndex;
+        private DevExpress.XtraGrid.Columns.GridColumn CompanyTiltle;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
     }
 }

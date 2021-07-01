@@ -82,6 +82,7 @@ namespace PMWORK.CodingForms
 
         private void cbxGroup_EditValueChanged(object sender, EventArgs e)
         {
+
             _selectGroup = (ComboBoxBaseClass)cbxGroup.GetSelectedDataRow();
             if (_selectGroup == null)
             {
@@ -108,8 +109,9 @@ namespace PMWORK.CodingForms
 
         private void LastGroupIndex()
         {
-            var qry = db.SubGroups.AsNoTracking().Select(x => x.SubGroupIndex).ToArray();
-            var last = qry.Max();
+            int last = 0;
+            var qry = db.SubGroups.AsNoTracking().Select(x => x.SubGroupIndex).ToList();
+            if(qry.Count() > 0) last = qry.Max();
             numSubGroup.EditValue = last + 1;
 
         }
