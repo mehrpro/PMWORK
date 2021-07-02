@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="CodingForms\ClassLib\CodeCreator.cs" />
     <Compile Include="CodingForms\CodingForm.cs">
       <SubType>Form</SubType>
     </Compile>

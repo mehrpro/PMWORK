@@ -19,6 +19,7 @@ namespace PMWORK.CodingForms
         private ComboBoxBaseClass _selectGroup;
         private ComboBoxBaseClass _selectSubGroup;
         private ComboBoxBaseClass _selectUnit;
+        private List<Coding> _MasterList;
         private Coding Row { get; set; }
 
 
@@ -72,9 +73,11 @@ namespace PMWORK.CodingForms
 
         public void CodeList()
         {
+            _MasterList = new List<Coding>();
+
             if (_selectCompany != null && _selectGroup != null && _selectSubGroup != null)
             {
-                dgvCodeList.DataSource = db.Codings.Where(a =>
+                _MasterList = db.Codings.Where(a =>
                 a.CompanyID_FK == _selectCompany.ID &&
                 a.GroupID_FK == _selectGroup.ID &&
                 a.SubGroupID_FK == _selectSubGroup.ID).ToList();
@@ -82,20 +85,37 @@ namespace PMWORK.CodingForms
             }
             else if (_selectCompany != null && _selectGroup != null)
             {
-                dgvCodeList.DataSource = db.Codings.Where(a =>
+                _MasterList = db.Codings.Where(a =>
                 a.CompanyID_FK == _selectCompany.ID &&
                 a.GroupID_FK == _selectGroup.ID).ToList();
             }
             else if (_selectCompany != null && _selectGroup != null && _selectSubGroup != null)
             {
-                dgvCodeList.DataSource = db.Codings.Where(a =>
+                _MasterList = db.Codings.Where(a =>
                 a.CompanyID_FK == _selectCompany.ID).ToList();
             }
             else
             {
-                dgvCodeList.DataSource = db.Codings.ToList();
+                _MasterList = db.Codings.ToList();
             }
+            dgvCodeList.DataSource = _MasterList;
 
+        }
+
+        private string LastNumber()
+        {
+            if (_MasterList.Count() > 0)
+            {
+                var lastNumber = _MasterList.Max(x => x.CodeIndex);
+                lastNumber++;
+                return lastNumber.ToString("000");
+            }
+            else
+            {
+                int firstNumber = 1;
+                return firstNumber.ToString("000");
+            }
+            
         }
 
         private void CodeBox()
@@ -103,31 +123,16 @@ namespace PMWORK.CodingForms
             CodeList();
             string companyStr , groupStr, subgroupStr;
             companyStr = groupStr = subgroupStr = "";
-
-            if (_selectCompany != null)
-            {
-                if (Convert.ToInt32(_selectCompany.ID) > 0)
-                {
+            if (_selectCompany != null)            
+                if (Convert.ToInt32(_selectCompany.ID) > 0)                
                     companyStr = Convert.ToInt32(_selectCompany.Tag).ToString();
-                }
-            }
-            if (_selectGroup != null)
-            {
-                if (Convert.ToInt32(_selectGroup.ID) > 0)
-                {
+            if (_selectGroup != null)            
+                if (Convert.ToInt32(_selectGroup.ID) > 0)                
                     groupStr = Convert.ToInt32(_selectGroup.Tag).ToString();
-                }
-            }
-            if (_selectSubGroup != null)
-            {
-                if (Convert.ToInt32(_selectSubGroup.ID) > 0)
-                {
-                    subgroupStr = Convert.ToInt32(_selectSubGroup.Tag).ToString("00");
-                }
-
-            }
+            if (_selectSubGroup != null)            
+                if (Convert.ToInt32(_selectSubGroup.ID) > 0)                
+                    subgroupStr = Convert.ToInt32(_selectSubGroup.Tag).ToString("00"); 
             txtCode.Text = companyStr + groupStr + subgroupStr;
-
         }
 
         private void cbxCompany_EditValueChanged(object sender, EventArgs e)
@@ -169,6 +174,7 @@ namespace PMWORK.CodingForms
                 return;
             }
             cbxSubGroupList(_selectCompany.ID, _selectGroup.ID);
+            ///
             CodeBox();
         }
 
