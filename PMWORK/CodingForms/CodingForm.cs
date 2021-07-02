@@ -29,24 +29,13 @@ namespace PMWORK.CodingForms
             db = new AppDbContext();
             cbxCompany.Properties.DisplayMember = "Title";
             cbxCompany.Properties.ValueMember = "ID";
-
             cbxGroup.Properties.DisplayMember = "Title";
             cbxGroup.Properties.ValueMember = "ID";
-
             cbxSubGroup.Properties.DisplayMember = "Title";
             cbxSubGroup.Properties.ValueMember = "ID";
-
-            cbxUnit.Properties.DisplayMember = "Title";
-            cbxUnit.Properties.ValueMember = "ID";
-
             cbxCompany.Properties.DataSource = db.Companies
                 .Select(s => new ComboBoxBaseClass()
                 { ID = s.ID, Title = s.CompanyTiltle, Tag = s.CompnayIndex.ToString() }).ToList();
-
-            cbxUnit.Properties.DataSource = db.UnitOfMeasurements
-                .Select(s => new ComboBoxBaseClass()
-                { ID = s.ID, Title = s.Unit, Tag = null }).ToList();
-
         }
 
         public void cbxGroupList(int id)
@@ -60,9 +49,9 @@ namespace PMWORK.CodingForms
                 }).ToList();
         }
 
-        public void cbxSubGroupList(int cid,int gid)
+        public void cbxSubGroupList(int cid, int gid)
         {
-            cbxSubGroup.Properties.DataSource = db.SubGroups.Where(g => g.CompanyID_FK == cid && g.GroupID_FK ==gid)
+            cbxSubGroup.Properties.DataSource = db.SubGroups.Where(g => g.CompanyID_FK == cid && g.GroupID_FK == gid)
                 .Select(s => new ComboBoxBaseClass()
                 {
                     ID = s.ID,
@@ -89,7 +78,7 @@ namespace PMWORK.CodingForms
                 a.CompanyID_FK == _selectCompany.ID &&
                 a.GroupID_FK == _selectGroup.ID).ToList();
             }
-            else if (_selectCompany != null && _selectGroup != null && _selectSubGroup != null)
+            else if (_selectCompany != null)
             {
                 _MasterList = db.Codings.Where(a =>
                 a.CompanyID_FK == _selectCompany.ID).ToList();
@@ -98,7 +87,9 @@ namespace PMWORK.CodingForms
             {
                 _MasterList = db.Codings.ToList();
             }
+
             dgvCodeList.DataSource = _MasterList;
+            CodeBox();
 
         }
 
@@ -115,24 +106,27 @@ namespace PMWORK.CodingForms
                 int firstNumber = 1;
                 return firstNumber.ToString("000");
             }
-            
+
         }
 
         private void CodeBox()
         {
-            CodeList();
-            string companyStr , groupStr, subgroupStr;
+            var lastNumber = "";
+            string companyStr, groupStr, subgroupStr;
             companyStr = groupStr = subgroupStr = "";
-            if (_selectCompany != null)            
-                if (Convert.ToInt32(_selectCompany.ID) > 0)                
+            if (_selectCompany != null)
+                if (Convert.ToInt32(_selectCompany.ID) > 0)
                     companyStr = Convert.ToInt32(_selectCompany.Tag).ToString();
-            if (_selectGroup != null)            
-                if (Convert.ToInt32(_selectGroup.ID) > 0)                
+            if (_selectGroup != null)
+                if (Convert.ToInt32(_selectGroup.ID) > 0)
                     groupStr = Convert.ToInt32(_selectGroup.Tag).ToString();
-            if (_selectSubGroup != null)            
-                if (Convert.ToInt32(_selectSubGroup.ID) > 0)                
-                    subgroupStr = Convert.ToInt32(_selectSubGroup.Tag).ToString("00"); 
-            txtCode.Text = companyStr + groupStr + subgroupStr;
+            if (_selectSubGroup != null)
+                if (Convert.ToInt32(_selectSubGroup.ID) > 0)
+                {
+                    subgroupStr = Convert.ToInt32(_selectSubGroup.Tag).ToString("00");
+                    lastNumber = LastNumber();
+                }
+            txtCode.Text = companyStr + groupStr + subgroupStr + lastNumber;
         }
 
         private void cbxCompany_EditValueChanged(object sender, EventArgs e)
@@ -151,7 +145,7 @@ namespace PMWORK.CodingForms
             cbxSubGroup.EditValue = null;
             cbxSubGroup.Properties.DataSource = null;
             cbxGroupList(_selectCompany.ID);
-            CodeBox();
+            CodeList();
         }
 
         private void cbxGroup_EditValueChanged(object sender, EventArgs e)
@@ -163,24 +157,88 @@ namespace PMWORK.CodingForms
                 cbxSubGroup.Properties.DataSource = null;
                 return;
             }
-            cbxSubGroupList(_selectCompany.ID,_selectGroup.ID); CodeBox();
+            cbxSubGroupList(_selectCompany.ID, _selectGroup.ID); CodeList();
         }
 
         private void cbxSubGroup_EditValueChanged(object sender, EventArgs e)
         {
             _selectSubGroup = (ComboBoxBaseClass)cbxSubGroup.GetSelectedDataRow();
             if (_selectGroup == null)
-            {              
+            {
                 return;
             }
             cbxSubGroupList(_selectCompany.ID, _selectGroup.ID);
             ///
-            CodeBox();
+            CodeList();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            if (btnClose.Tag == "cansel")
+            {
+                btnClose.Tag = "Close";
+                btnClose.Text = "بستن";
+                ClearForm();
+
+            }
+            else
+                Close();
+        }
+
+        private void ClearForm()
+        {
+            txtCodeTitle.ResetText();
+            txtDescription.ResetText();
+            Row = null;
+            cbxCompany.ReadOnly = cbxGroup.ReadOnly = cbxSubGroup.ReadOnly = false;
+
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (btnClose.Tag == "cansel")
+            {
+                var select = db.Codings.Find(Row.ID);
+                select.CodeTitle = txtCodeTitle.Text.Trim();
+                select.Description = txtCodeTitle.Text.Trim();
+            }
+            else
+            {
+                var obj = new Coding()
+                {
+                    CompanyID_FK = _selectCompany.ID,
+                    GroupID_FK = _selectGroup.ID,
+                    SubGroupID_FK = _selectSubGroup.ID,
+                    UserID_FK = PublicClass.UserID,
+                    Code = Convert.ToInt32(txtCode.Text.Trim()),
+                    CodeIndex = Convert.ToInt16(txtCode.Text.Remove(0, 4)),
+                    Description = txtDescription.Text.Trim(),
+                    CodeTitle = txtCodeTitle.Text.Trim(),
+                };
+                db.Codings.Add(obj);
+            }
+            db.SaveChanges();
+            CodeList();
+           // CodeBox(LastNumber());
+            ClearForm();
+
+
+
+        }
+
+        private void btnSelect_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (gvCodeList.GetFocusedRowCellValue("ID") != null)
+            {
+                var row = gvCodeList.GetFocusedRow();
+                Row = (Coding)row;
+                txtCodeTitle.EditValue = Row.CodeTitle;
+                txtDescription.EditValue = Row.Description;
+                txtCode.EditValue = Row.Code;
+                cbxGroup.ReadOnly = cbxCompany.ReadOnly = cbxSubGroup.ReadOnly = true;
+                btnClose.Text = "انصراف";
+                btnClose.Tag = "cansel";
+            }
         }
     }
 }

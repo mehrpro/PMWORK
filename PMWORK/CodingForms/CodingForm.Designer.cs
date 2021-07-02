@@ -44,12 +44,9 @@ namespace PMWORK.CodingForms
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.cbxUnit = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cbxSubGroup = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cbxGroup = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -65,14 +62,11 @@ namespace PMWORK.CodingForms
             this.Code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CodeTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SubGroupID_FK = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodeTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxUnit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxSubGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxGroup.Properties)).BeginInit();
@@ -96,11 +90,9 @@ namespace PMWORK.CodingForms
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.txtCode);
-            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.cbxUnit);
             this.panelControl1.Controls.Add(this.cbxSubGroup);
             this.panelControl1.Controls.Add(this.cbxGroup);
             this.panelControl1.Controls.Add(this.cbxCompany);
@@ -128,6 +120,7 @@ namespace PMWORK.CodingForms
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "ذخیره";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtDescription
             // 
@@ -185,22 +178,11 @@ namespace PMWORK.CodingForms
             this.txtCode.Properties.AppearanceDisabled.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
             this.txtCode.Properties.AppearanceFocused.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
             this.txtCode.Properties.AppearanceReadOnly.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            this.txtCode.Properties.DisplayFormat.FormatString = "0000-000";
-            this.txtCode.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtCode.Properties.Mask.EditMask = "N00";
             this.txtCode.Properties.ReadOnly = true;
             this.txtCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCode.Size = new System.Drawing.Size(120, 20);
             this.txtCode.TabIndex = 15;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Location = new System.Drawing.Point(716, 107);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(21, 13);
-            this.labelControl2.TabIndex = 9;
-            this.labelControl2.Text = "واحد";
             // 
             // labelControl1
             // 
@@ -228,25 +210,6 @@ namespace PMWORK.CodingForms
             this.labelControl3.Size = new System.Drawing.Size(31, 13);
             this.labelControl3.TabIndex = 6;
             this.labelControl3.Text = "شرکت";
-            // 
-            // cbxUnit
-            // 
-            this.cbxUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbxUnit.Location = new System.Drawing.Point(521, 104);
-            this.cbxUnit.Name = "cbxUnit";
-            this.cbxUnit.Parmida_ActivePlusMultiKeys = false;
-            this.cbxUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbxUnit.Properties.PopupView = this.gridView2;
-            this.cbxUnit.Size = new System.Drawing.Size(189, 20);
-            this.cbxUnit.TabIndex = 10;
-            // 
-            // gridView2
-            // 
-            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // cbxSubGroup
             // 
@@ -391,8 +354,7 @@ namespace PMWORK.CodingForms
             this.ID,
             this.Code,
             this.CodeTitle,
-            this.Description,
-            this.SubGroupID_FK});
+            this.Description});
             this.gvCodeList.GridControl = this.dgvCodeList;
             this.gvCodeList.Name = "gvCodeList";
             // 
@@ -402,7 +364,7 @@ namespace PMWORK.CodingForms
             this.Select.Name = "Select";
             this.Select.Visible = true;
             this.Select.VisibleIndex = 0;
-            this.Select.Width = 33;
+            this.Select.Width = 39;
             // 
             // btnSelect
             // 
@@ -416,6 +378,7 @@ namespace PMWORK.CodingForms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnSelect.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelect_ButtonClick);
             // 
             // ID
             // 
@@ -432,7 +395,7 @@ namespace PMWORK.CodingForms
             this.Code.FieldName = "Code";
             this.Code.Name = "Code";
             this.Code.Visible = true;
-            this.Code.VisibleIndex = 3;
+            this.Code.VisibleIndex = 2;
             this.Code.Width = 128;
             // 
             // CodeTitle
@@ -441,7 +404,7 @@ namespace PMWORK.CodingForms
             this.CodeTitle.FieldName = "CodeTitle";
             this.CodeTitle.Name = "CodeTitle";
             this.CodeTitle.Visible = true;
-            this.CodeTitle.VisibleIndex = 4;
+            this.CodeTitle.VisibleIndex = 3;
             this.CodeTitle.Width = 227;
             // 
             // Description
@@ -450,17 +413,8 @@ namespace PMWORK.CodingForms
             this.Description.FieldName = "Description";
             this.Description.Name = "Description";
             this.Description.Visible = true;
-            this.Description.VisibleIndex = 5;
+            this.Description.VisibleIndex = 4;
             this.Description.Width = 193;
-            // 
-            // SubGroupID_FK
-            // 
-            this.SubGroupID_FK.Caption = "گروه";
-            this.SubGroupID_FK.FieldName = "SubGroupID_FK";
-            this.SubGroupID_FK.Name = "SubGroupID_FK";
-            this.SubGroupID_FK.Visible = true;
-            this.SubGroupID_FK.VisibleIndex = 2;
-            this.SubGroupID_FK.Width = 124;
             // 
             // CodingForm
             // 
@@ -478,8 +432,6 @@ namespace PMWORK.CodingForms
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodeTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxUnit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxSubGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxGroup.Properties)).EndInit();
@@ -505,10 +457,7 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraGrid.Views.Grid.GridView gvGroup;
         private DevExpress.XtraEditors.SearchLookUpEdit cbxCompany;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SearchLookUpEdit cbxUnit;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.SearchLookUpEdit cbxSubGroup;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton btnClose;
@@ -526,7 +475,6 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraGrid.Columns.GridColumn Code;
         private DevExpress.XtraGrid.Columns.GridColumn CodeTitle;
         private DevExpress.XtraGrid.Columns.GridColumn Description;
-        private DevExpress.XtraGrid.Columns.GridColumn SubGroupID_FK;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnSelect;
     }
 }

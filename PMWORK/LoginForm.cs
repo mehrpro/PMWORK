@@ -16,6 +16,8 @@ namespace PMWORK
         public LoginForm()
         {
             InitializeComponent();
+            //////
+            PublicClass.UserID = 1;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
