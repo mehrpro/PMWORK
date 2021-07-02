@@ -116,9 +116,9 @@ namespace PMWORK.CodingForms
             this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl3.Location = new System.Drawing.Point(594, 25);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(64, 13);
+            this.labelControl3.Size = new System.Drawing.Size(31, 13);
             this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "کد گروه اصلی";
+            this.labelControl3.Text = "شرکت";
             // 
             // cbxCompany
             // 

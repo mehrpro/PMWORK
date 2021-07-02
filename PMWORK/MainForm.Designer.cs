@@ -79,6 +79,7 @@ namespace PMWORK
             // 
             this.grpInfrastructure.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.itmMachinery});
+            this.grpInfrastructure.Expanded = true;
             this.grpInfrastructure.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("grpInfrastructure.ImageOptions.Image")));
             this.grpInfrastructure.Name = "grpInfrastructure";
             this.grpInfrastructure.Text = "زیرساخت";
@@ -88,6 +89,7 @@ namespace PMWORK
             this.itmMachinery.Name = "itmMachinery";
             this.itmMachinery.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.itmMachinery.Text = "ماشین آلات";
+            this.itmMachinery.Click += new System.EventHandler(this.itmMachinery_Click);
             // 
             // grpCoding
             // 
@@ -97,7 +99,6 @@ namespace PMWORK
             this.itmSubGroups,
             this.itmCodings,
             this.itmUnits});
-            this.grpCoding.Expanded = true;
             this.grpCoding.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("grpCoding.ImageOptions.Image")));
             this.grpCoding.Name = "grpCoding";
             this.grpCoding.Text = "کدینگ";

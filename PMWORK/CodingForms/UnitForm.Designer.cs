@@ -46,9 +46,9 @@ namespace PMWORK.CodingForms
             this.dgvUnit = new DevExpress.XtraGrid.GridControl();
             this.gvUnit = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.select = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnSelect = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Unit = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnSelect = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -228,6 +228,7 @@ namespace PMWORK.CodingForms
             this.gvUnit.FixedLineWidth = 3;
             this.gvUnit.GridControl = this.dgvUnit;
             this.gvUnit.Name = "gvUnit";
+            this.gvUnit.OptionsBehavior.ReadOnly = true;
             // 
             // select
             // 
@@ -236,6 +237,20 @@ namespace PMWORK.CodingForms
             this.select.Visible = true;
             this.select.VisibleIndex = 0;
             this.select.Width = 33;
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject2.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject3.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject4.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            this.btnSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnSelect.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelect_ButtonClick);
             // 
             // ID
             // 
@@ -254,16 +269,6 @@ namespace PMWORK.CodingForms
             this.Unit.Visible = true;
             this.Unit.VisibleIndex = 2;
             this.Unit.Width = 216;
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            this.btnSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnSelect.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelect_ButtonClick);
             // 
             // Description
             // 

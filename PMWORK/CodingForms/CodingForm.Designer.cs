@@ -29,12 +29,12 @@ namespace PMWORK.CodingForms
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodingForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -56,7 +56,7 @@ namespace PMWORK.CodingForms
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvCodeList = new DevExpress.XtraGrid.GridControl();
             this.gvCodeList = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Select = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SelectButton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSelect = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Code = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -350,32 +350,33 @@ namespace PMWORK.CodingForms
             this.gvCodeList.Appearance.ViewCaption.Options.UseTextOptions = true;
             this.gvCodeList.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvCodeList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Select,
+            this.SelectButton,
             this.ID,
             this.Code,
             this.CodeTitle,
             this.Description});
             this.gvCodeList.GridControl = this.dgvCodeList;
             this.gvCodeList.Name = "gvCodeList";
+            this.gvCodeList.OptionsBehavior.ReadOnly = true;
             // 
-            // Select
+            // SelectButton
             // 
-            this.Select.ColumnEdit = this.btnSelect;
-            this.Select.Name = "Select";
-            this.Select.Visible = true;
-            this.Select.VisibleIndex = 0;
-            this.Select.Width = 39;
+            this.SelectButton.ColumnEdit = this.btnSelect;
+            this.SelectButton.Name = "SelectButton";
+            this.SelectButton.Visible = true;
+            this.SelectButton.VisibleIndex = 0;
+            this.SelectButton.Width = 34;
             // 
             // btnSelect
             // 
             this.btnSelect.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            serializableAppearanceObject1.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            serializableAppearanceObject2.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            serializableAppearanceObject3.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
-            serializableAppearanceObject4.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            serializableAppearanceObject5.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject6.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject7.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
+            serializableAppearanceObject8.TextOptions.RightToLeftFixed = System.Windows.Forms.RightToLeft.No;
             this.btnSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnSelect.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnSelect_ButtonClick);
@@ -387,7 +388,7 @@ namespace PMWORK.CodingForms
             this.ID.Name = "ID";
             this.ID.Visible = true;
             this.ID.VisibleIndex = 1;
-            this.ID.Width = 73;
+            this.ID.Width = 87;
             // 
             // Code
             // 
@@ -396,7 +397,7 @@ namespace PMWORK.CodingForms
             this.Code.Name = "Code";
             this.Code.Visible = true;
             this.Code.VisibleIndex = 2;
-            this.Code.Width = 128;
+            this.Code.Width = 152;
             // 
             // CodeTitle
             // 
@@ -405,7 +406,7 @@ namespace PMWORK.CodingForms
             this.CodeTitle.Name = "CodeTitle";
             this.CodeTitle.Visible = true;
             this.CodeTitle.VisibleIndex = 3;
-            this.CodeTitle.Width = 227;
+            this.CodeTitle.Width = 271;
             // 
             // Description
             // 
@@ -414,7 +415,7 @@ namespace PMWORK.CodingForms
             this.Description.Name = "Description";
             this.Description.Visible = true;
             this.Description.VisibleIndex = 4;
-            this.Description.Width = 193;
+            this.Description.Width = 234;
             // 
             // CodingForm
             // 
@@ -470,7 +471,7 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraEditors.TextEdit txtCode;
         private DevExpress.XtraGrid.GridControl dgvCodeList;
         private DevExpress.XtraGrid.Views.Grid.GridView gvCodeList;
-        private DevExpress.XtraGrid.Columns.GridColumn Select;
+        private DevExpress.XtraGrid.Columns.GridColumn SelectButton;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn Code;
         private DevExpress.XtraGrid.Columns.GridColumn CodeTitle;

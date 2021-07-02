@@ -18,7 +18,6 @@ namespace PMWORK.CodingForms
         private ComboBoxBaseClass _selectCompany;
         private ComboBoxBaseClass _selectGroup;
         private ComboBoxBaseClass _selectSubGroup;
-        private ComboBoxBaseClass _selectUnit;
         private List<Coding> _MasterList;
         private Coding Row { get; set; }
 
@@ -174,7 +173,7 @@ namespace PMWORK.CodingForms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (btnClose.Tag == "cansel")
+            if (btnClose.Tag.ToString() == "cansel")
             {
                 btnClose.Tag = "Close";
                 btnClose.Text = "بستن";
@@ -196,7 +195,7 @@ namespace PMWORK.CodingForms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (btnClose.Tag == "cansel")
+            if (btnClose.Tag.ToString() == "cansel")
             {
                 var select = db.Codings.Find(Row.ID);
                 select.CodeTitle = txtCodeTitle.Text.Trim();
@@ -219,7 +218,6 @@ namespace PMWORK.CodingForms
             }
             db.SaveChanges();
             CodeList();
-           // CodeBox(LastNumber());
             ClearForm();
 
 

@@ -55,7 +55,7 @@ namespace PMWORK.CodingForms
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.dgvSubGroupList = new DevExpress.XtraGrid.GridControl();
             this.gvSubGroupList = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Select = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SelectButton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSelect = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SubGroupIndex = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -349,21 +349,22 @@ namespace PMWORK.CodingForms
             this.gvSubGroupList.Appearance.ViewCaption.Options.UseTextOptions = true;
             this.gvSubGroupList.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvSubGroupList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Select,
+            this.SelectButton,
             this.ID,
             this.SubGroupIndex,
             this.SubGroupTitle,
             this.Description});
             this.gvSubGroupList.GridControl = this.dgvSubGroupList;
             this.gvSubGroupList.Name = "gvSubGroupList";
+            this.gvSubGroupList.OptionsBehavior.ReadOnly = true;
             // 
-            // Select
+            // SelectButton
             // 
-            this.Select.ColumnEdit = this.btnSelect;
-            this.Select.Name = "Select";
-            this.Select.Visible = true;
-            this.Select.VisibleIndex = 0;
-            this.Select.Width = 31;
+            this.SelectButton.ColumnEdit = this.btnSelect;
+            this.SelectButton.Name = "SelectButton";
+            this.SelectButton.Visible = true;
+            this.SelectButton.VisibleIndex = 0;
+            this.SelectButton.Width = 31;
             // 
             // btnSelect
             // 
@@ -473,7 +474,7 @@ namespace PMWORK.CodingForms
         private DevExpress.XtraGrid.Columns.GridColumn SubGroupIndex;
         private DevExpress.XtraGrid.Columns.GridColumn SubGroupTitle;
         private DevExpress.XtraGrid.Columns.GridColumn Description;
-        private DevExpress.XtraGrid.Columns.GridColumn Select;
+        private DevExpress.XtraGrid.Columns.GridColumn SelectButton;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnSelect;
         private DevExpress.XtraEditors.TextEdit numSubGroup;
     }

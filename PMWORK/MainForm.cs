@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using PMWORK.CodingForms;
+using PMWORK.Machinery;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,6 +60,11 @@ namespace PMWORK
         private void itmUnits_Click(object sender, EventArgs e)
         {
             ShowForms(new UnitForm());
+        }
+
+        private void itmMachinery_Click(object sender, EventArgs e)
+        {
+            ShowForms(new MachineryForm());
         }
     }
 }
