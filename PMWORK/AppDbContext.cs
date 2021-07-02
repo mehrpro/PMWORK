@@ -107,15 +107,15 @@ namespace PMWORK
                 .HasForeignKey(x => x.CompanyID_FK)
                 .WillCascadeOnDelete(false);
             builder.Entity<Company>()
-    .HasMany(x => x.SubGroups)
-    .WithRequired(x => x.Company)
-    .HasForeignKey(x => x.CompanyID_FK)
-    .WillCascadeOnDelete(false);
+                .HasMany(x => x.SubGroups)
+                .WithRequired(x => x.Company)
+                .HasForeignKey(x => x.CompanyID_FK)
+                .WillCascadeOnDelete(false);
             builder.Entity<Company>()
-    .HasMany(x => x.Codings)
-    .WithRequired(x => x.Company)
-    .HasForeignKey(x => x.CompanyID_FK)
-    .WillCascadeOnDelete(false);
+                .HasMany(x => x.Codings)
+                .WithRequired(x => x.Company)
+                .HasForeignKey(x => x.CompanyID_FK)
+                .WillCascadeOnDelete(false);
 
             builder.Entity<ConsumablePart>().HasKey(x => x.ID);
             builder.Entity<ConsumablePart>().Property(x => x.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();

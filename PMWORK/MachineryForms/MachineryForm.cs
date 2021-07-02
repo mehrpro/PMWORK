@@ -1,21 +1,13 @@
 ﻿using DevExpress.XtraEditors;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace PMWORK.Machinery
+namespace PMWORK.MachineryForms
 {
     public partial class MachineryForm : XtraForm
     {
 
-        AppDbContext db;
+        private AppDbContext db;
         
         public MachineryForm()
         {
@@ -27,16 +19,25 @@ namespace PMWORK.Machinery
 
         void cbxCodingList()
         {
-            cbxCoding.Properties.DisplayMember = "Code";
+            cbxCoding.Properties.DisplayMember = "Cod";
             cbxCoding.Properties.ValueMember = "ID";
-            var qry = db.Codings.Select(x=> new ComboBoxCoding()
+            var qry = db.Codings.ToList();
+            var list = new List<ComboBoxCoding>();
+            foreach (var x in qry)
             {
-                ID = x.ID,
-                Code = x.Code,
-                Title = x.CodeTitle,
-                Company = $"{x.Company.CompanyTiltle}-{x.Group.GroupTitle}-{x.SubGroup.SubGroupTitle}"
-            }).ToList();
-            cbxCoding.Properties.DataSource = qry;
+                var item = new ComboBoxCoding();
+
+                item.ID = x.ID;
+                item.Cod = x.Code;
+                item.Title = x.CodeTitle;
+                item.Des = x.SubGroup.SubGroupTitle;
+                //}-{x.Group.GroupTitle}-{x.SubGroup.SubGroupTitle}"
+
+                list.Add(item);
+              
+            }
+
+            cbxCoding.Properties.DataSource = list;
         }
 
 

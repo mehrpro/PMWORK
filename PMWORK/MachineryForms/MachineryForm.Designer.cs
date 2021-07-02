@@ -1,5 +1,5 @@
 ﻿
-namespace PMWORK.Machinery
+namespace PMWORK.MachineryForms
 {
     partial class MachineryForm
     {

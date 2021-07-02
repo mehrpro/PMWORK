@@ -98,6 +98,7 @@
       <DependentUpon>UnitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ComboBoxBaseClass.cs" />
+    <Compile Include="ComboBoxCoding.cs" />
     <Compile Include="Entities\Applicant.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Cleam.cs" />

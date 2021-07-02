@@ -9,24 +9,8 @@ namespace PMWORK
     public class PublicClass
     {
         public static int UserID { get; set; } 
-        private AppDbContext _db;
-        public AppDbContext db
-        {
-            get
-            {
-                if (_db == null)
-                {
-                    _db = new AppDbContext();
-                    return _db;
-                }
-                return _db;
-            }
-            set
-            {
-                _db = value;
-            }
 
-        }
+        
 
     }
 }
