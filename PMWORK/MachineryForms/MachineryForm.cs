@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace PMWORK.MachineryForms
@@ -17,11 +18,11 @@ namespace PMWORK.MachineryForms
         }
 
 
-        void cbxCodingList()
+      public  void cbxCodingList()
         {
             cbxCoding.Properties.DisplayMember = "Cod";
             cbxCoding.Properties.ValueMember = "ID";
-            var qry = db.Codings.ToList();
+            var qry = db.Codings.Include(a => a.Company).ToList();
             var list = new List<ComboBoxCoding>();
             foreach (var x in qry)
             {
@@ -30,7 +31,7 @@ namespace PMWORK.MachineryForms
                 item.ID = x.ID;
                 item.Cod = x.Code;
                 item.Title = x.CodeTitle;
-                item.Des = x.SubGroup.SubGroupTitle;
+                item.Des = x.Company.CompanyTiltle;
                 //}-{x.Group.GroupTitle}-{x.SubGroup.SubGroupTitle}"
 
                 list.Add(item);

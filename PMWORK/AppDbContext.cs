@@ -112,7 +112,7 @@ namespace PMWORK
                 .HasForeignKey(x => x.CompanyID_FK)
                 .WillCascadeOnDelete(false);
             builder.Entity<Company>()
-                .HasMany(x => x.Codings)
+                .HasMany<Coding>(x => x.Codings)
                 .WithRequired(x => x.Company)
                 .HasForeignKey(x => x.CompanyID_FK)
                 .WillCascadeOnDelete(false);
